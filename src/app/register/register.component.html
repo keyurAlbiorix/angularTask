@@ -1,0 +1,35 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+      <h1>Register</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+  
+      <label for="email"><b>Email</b></label>
+      <input type="text" formControlName="email" placeholder="Enter Email" name="email" id="email" required>
+      <div style="color: red;"  *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)">
+        Please provide a Email.
+      </div>
+      <div>
+      <label for="psw"><b>Password</b></label>
+      <input [type]="password" formControlName="password" placeholder="Enter Password" name="psw" id="psw" required>
+      <button type="button" (click)="onClicked()">
+        <i class="fa fa-eye" aria-hidden="true" *ngIf="!show"></i>
+        <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
+      </button>
+      <div style="color: red;"  *ngIf="myForm.get('password').invalid && (myForm.get('password').dirty || myForm.get('password').touched)">
+        Please provide a password.
+      </div>
+    </div>
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <input type="password" formControlName="resPassword" placeholder="Repeat Password" name="psw-repeat" id="psw-repeat" required>
+      <div style="color: red;"  *ngIf="myForm.get('resPassword').invalid && (myForm.get('resPassword').dirty || myForm.get('resPassword').touched)">
+         Provide a password Not Match.
+      </div>
+      <hr>
+      <button type="submit" class="registerbtn">Register</button>
+    </div>
+  
+    <div class="container signin">
+      <p>Already have an account? <a [routerLink]="['/login']" routerLinkActive="router-link-active" >Sign in</a>.</p>
+    </div>
+  </form>

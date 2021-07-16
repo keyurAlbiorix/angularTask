@@ -1,0 +1,26 @@
+<table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col" >Description</th>
+        <th scope="col">NotificationType</th>
+        <!-- <th scope="col">Delete</th> -->
+        <!-- <td><input type="text"  name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search Sports"> </td> -->
+        <!-- <td><buton class="btn btn-primary btn-sm" [(ngModel)]="searchText">search</buton></td> -->
+       
+      </tr>
+    </thead>
+    <tbody >
+      <tr   *ngFor="let player of myForm"> 
+      
+        <!-- <th scope="row">{{userno + 1}}</th> -->
+        <td> {{player.title}}</td>
+        <td> {{player.description}}</td>
+        <td> {{player.notificationType}}</td>
+        <!-- <td> {{player.email}}</td> 
+        <td> {{player.createdAt}}</td> -->
+        <!-- <td> <button class="btn btn-primary" (click)="onUpdate(player._id)"  >edit</button></td> -->
+        <!-- <td> <button class="btn btn-danger" (click)="ondelete(userno)">delete</button></td> -->
+      </tr>
+    </tbody>
+  </table>

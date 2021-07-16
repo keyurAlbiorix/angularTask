@@ -1,0 +1,68 @@
+
+ <!-- olde code -->
+ <div>
+  <div   [ngStyle]="{'background-color': color}">
+<h1>HHHHH</h1>
+
+</div>
+</div>
+<button (click)="onChnage()">save
+    <!-- //{{ button.name }}  -->
+   </button>
+
+    <!-- <div *ngFor="let item of items; index as i" [style.background-color]="item.color"  (click)="changeColour(i)"></div>  -->
+<br>
+<br>
+<!-- 
+    <input type="text" name="value"> <br><br><button (click)="sendValue()">send</button><br><br>
+    <input type="text" name="toPassValue"> -->
+    <!-- <div class="col-md-1"> 
+        <input type="text" [(ngModel)]="value.seat1" (ngModelChange)="seat1Modified(value)"/>
+      </div>  -->
+      
+      <!-- <div class="col-md-1"> Year 2 seats </div>  -->
+      
+      <!-- <div class="col-md-1"> 
+        <input type="number" [(ngModel)]="value.seat2" (ngModelChange)="seat2Modified(value)" /> 
+      </div>  -->
+      <!-- <div class="col-md-1"> Year 3 seats </div>  -->
+      <!-- <div class="col-md-1"> <input type="number" [(ngModel)]="value.seat3" /> </div> -->
+
+
+<!-- 
+      <div class="col-md-1">
+        <ul  *ngFor="let player of value">
+          <li (click)="onSubmit(player.seat1)" > {{player.seat1}}
+          </li>
+          <li (click)="onSubmit(player.seat2)"> {{player.seat2}}
+          </li>
+          <li (click)="onSubmit(player.seat3)"> {{player.seat3}}
+        <button name="submit" (click)="onSubmit(player)">submit</button>
+          </li>
+        </ul>
+</div>
+        <div class="col-md-1">
+            <ul *ngFor="let item of arrayEmpty"> 
+              <li (click)="onDelete(item)"> {{item}}
+              </li>
+            </ul>
+    </div> -->
+    <!-- <div> -->
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" > 
+        <mat-form-field appearance="fill">
+       <mat-label>Title</mat-label>
+       <input matInput placeholder="Title" formControlName="title" id="title" name="title">
+     </mat-form-field><br>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput name="desc" formControlName="description" name="description"></textarea>
+    </mat-form-field><br> 
+    <mat-label>Purchase</mat-label><br>
+    <mat-radio-group aria-label="Select" formControlName="notificationType" name="notificationType" an option>
+      <mat-radio-button name="title1" value="free" name="free">Free</mat-radio-button><br><br>
+      <mat-radio-button name="title2" value="paid" name="paid">Paid</mat-radio-button>
+    </mat-radio-group>
+    <button type="submit" md-raised-button>Submit</button>
+    </form>
+
+ 

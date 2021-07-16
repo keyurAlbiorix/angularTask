@@ -1,0 +1,103 @@
+<!-- 
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)"> 
+  <div class="form-row">
+    <label  class="col-md-4 mb-3">
+      Name:
+      <input formControlName="name" placeholder="Your name">
+    </label>
+    <div *ngIf="myForm.get('name').invalid && (myForm.get('name').dirty || myForm.get('name').touched)">
+      Please provide a name.
+    </div>
+  </div>
+  <div>
+    <label>
+      Email:
+      <input formControlName="email" placeholder="Your email">
+    </label>
+    <div *ngIf="myForm.get('email').invalid && (myForm.get('email').dirty || myForm.get('email').touched)">
+      Please provide a valid email address.
+    </div>
+  </div>
+
+  <div>
+    <label>
+      Age:
+      <input formControlName="age" type="number" placeholder="Your age">
+    </label>
+    <div *ngIf="myForm.get('name').invalid && (myForm.get('name').dirty || myForm.get('name').touched)">
+      Please provide a name.
+    </div>
+  </div>
+
+  <div>
+    <label>
+      Note:
+      <input formControlName="Note" placeholder="Your Note">
+    </label>
+    <div *ngIf="myForm.get('Note').invalid && (myForm.get('Note').dirty || myForm.get('Note').touched)">
+      Note must be at least 15 characters long.
+    </div>
+  </div>
+  <button type="submit" mat-raised-button (click)="openDialog()">Edit</button>
+  <button type="submit" [disabled]="myForm.invalid">Submit</button>
+
+  
+ <div>
+  <table *ngFor="let player of users">
+    <tr>address
+      {{player.address}}
+      {{player.company}}
+      {{player.email}}
+      {{player.name}}
+      {{player.phone}}
+      {{player.username}}
+      {{player.website}}
+    </tr>
+  </table>
+ </div>
+
+</form>
+ <mat-card>{{this.myForm.value.name}} </mat-card> 
+ <mat-card>{{this.myForm.value.email}}</mat-card> 
+ <mat-card>{{this.myForm.value.age}}</mat-card> 
+ <mat-card>{{this.myForm.value.Note}}</mat-card>  -->
+<!-- <div>
+  <table border="1px" >
+    <tr>
+      <td>
+      {{player.name}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+      {{player.email}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+      {{player.createdAt}}
+      </td>
+    </tr>
+  </table>
+</div> -->
+
+<table class="table" >
+  <thead>
+    <tr>
+      <th scope="col">Index</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr *ngFor="let player of users;index as userno; filter">
+      <th scope="row">{{userno + 1}}</th>
+      <td> {{player.name}}</td>
+      <td> {{player.email}}</td> 
+      <td> {{player.createdAt}}</td>
+      <td> <button class="btn btn-primary" (click)="openDialog(player)">edit</button></td>
+      <td> <button class="btn btn-danger" (click)="ondelete(userno)">delete</button></td>
+    </tr>
+  </tbody>
+</table>
