@@ -51,63 +51,68 @@
           </mat-form-field>
         </div>
         <div>
-
+          <div>
+            <!-- <button  mat-button matStepperPrevious type="submit" mat-raised-button color="accent" >Previous</button> -->
+            <button  mat-button matStepperNext type="submit" class="btn btn-primary" >Next</button>
+        </div>
           <div>
             <!-- <button mat-button matStepperNext>Next</button> -->
           </div>
         </div>
       </mat-card>
-      <app-save-button></app-save-button>
+      <!-- <app-save-button></app-save-button> -->
       <!-- <div>
-            <button  style="margin-left: 1100px;" (click)="goBack(stepper)"  mat-raised-button color="accent" type="button">Back</button>
-            &nbsp;&nbsp;&nbsp;<button (click)="goForward(stepper)"  class="btn btn-primary" type="button">Next</button>
-         </div>  -->
+        <button style="margin-left: 1100px;" (click)="goBack(stepper)" mat-raised-button color="accent"
+          type="button">Back</button>
+        &nbsp;&nbsp;&nbsp;<button (click)="goForward(stepper)" class="btn btn-primary" type="button">Next</button>
+      </div> -->
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Bank Details</ng-template>
       <app-bank-component></app-bank-component>
-      <div>hi
-        <app-save-button></app-save-button>
+      <div>
+        <!-- <app-save-button></app-save-button> -->
       </div>
       <!-- <div>
-            <button  style="margin-left: 1100px;" (click)="goBack(stepper)"  mat-raised-button color="accent" type="button">Back</button>
-            &nbsp;&nbsp;&nbsp;<button (click)="goForward(stepper)"  class="btn btn-primary" type="button">Next</button>
-         </div>  -->
+        <button style="margin-left: 1100px;" (click)="goBack(stepper)" mat-raised-button color="accent"
+          type="button">Back</button>
+        &nbsp;&nbsp;&nbsp;<button (click)="goForward(stepper)" class="btn btn-primary" type="button">Next</button>
+      </div> -->
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Professional Detail</ng-template>
       <app-professional-details></app-professional-details>
-      <div>
+      <!-- <div>
         <button style="margin-left: 1100px;" (click)="goBack(stepper)" mat-raised-button color="accent"
           type="button">Back</button>
         &nbsp;&nbsp;&nbsp;<button (click)="goForward(stepper)" class="btn btn-primary" type="button">Next</button>
-      </div>
+      </div> -->
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Education Details</ng-template>
       <app-education-detail></app-education-detail>
-      <div>
+      <!-- <div>
         <button style="margin-left: 1100px;" (click)="goBack(stepper)" mat-raised-button color="accent"
           type="button">Back</button>
         &nbsp;&nbsp;&nbsp;<button (click)="goForward(stepper)" class="btn btn-primary" type="button">Next</button>
-      </div>
+      </div> -->
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Experience Detail</ng-template>
       <app-experience-detail></app-experience-detail>
-      <div>
+      <!-- <div>
         <button style="margin-left: 1100px;" (click)="goBack(stepper)" mat-raised-button color="accent"
           type="button">Back</button>
         &nbsp;&nbsp;&nbsp;<button (click)="goForward(stepper)" class="btn btn-primary" type="button">Next</button>
-      </div>
+      </div> -->
     </form>
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
@@ -115,7 +120,7 @@
       <ng-template matStepLabel>Current Organizarion Detail</ng-template>
       <app-current-organization-detail></app-current-organization-detail>
       <div>
-        <button mat-button mat-raised-button color="accent" matStepperPrevious>FINISH</button>
+        <!-- <button mat-button mat-raised-button color="accent" matStepperPrevious>FINISH</button> -->
         <!-- <button  style="margin-left: 1100px;" (click)="goBack(stepper)"  mat-raised-button color="accent" type="button">Back</button>
               &nbsp;&nbsp;&nbsp;<button (click)="goForward(stepper)"  class="btn btn-primary" type="button">Next</button> -->
       </div>

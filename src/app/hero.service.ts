@@ -12,6 +12,8 @@ export class HeroService {
   cast = this.userData.asObservable(); 
   // data = this.dataSource.asObservable();
 
+  public bankNameMat = new BehaviorSubject<any>('');
+
   editUser(newUser){
     this.userData.next(newUser);
   }
@@ -35,8 +37,9 @@ export class HeroService {
     return this.httpClient.patch(`http://localhost:3000/api/update_users/${userData.id}`,userData);
   }
   loggedIn(){
-    console.log("!localStorage.getItem('token')",!localStorage.getItem('token')
-    )
+    // console.log("!localStorage.getItem('token')",
+    !localStorage.getItem('token')
+    // )
     return !!localStorage.getItem('token')
 
   }
