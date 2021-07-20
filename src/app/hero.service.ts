@@ -1,10 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { BehaviorSubject } from 'rxjs';
+import { BankComponentComponent } from './bank-component/bank-component.component';
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
+
+  // firstFormGroup: any;
+  private userData = new BehaviorSubject<string>('keyur');
+  cast = this.userData.asObservable(); 
+  // data = this.dataSource.asObservable();
+
+  editUser(newUser){
+    this.userData.next(newUser);
+  }
+
 
   constructor(private httpClient: HttpClient  ) { }
 

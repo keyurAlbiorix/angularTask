@@ -1,0 +1,132 @@
+<mat-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()">
+      <mat-card>
+        <mat-card-title>Personal Details</mat-card-title>
+        <ng-template matStepLabel>Personal Details</ng-template>
+        <mat-form-field appearance="fill">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="First name" formControlName="firstName" required>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;
+        <mat-form-field appearance="fill">
+          <mat-label>Middel Name</mat-label>
+          <input matInput placeholder="Middel name" formControlName="middelName" required>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;
+        <mat-form-field appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last name" formControlName="lastName" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input matInput email placeholder="Email" formControlName="email" required>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;
+        <mat-form-field appearance="fill">
+          <mat-label>Mobile number</mat-label>
+          <input matInput placeholder="Middel name" formControlName="mobileNumber" required>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;
+        <mat-form-field appearance="fill">
+          <mat-label>Contact number</mat-label>
+          <input matInput placeholder="Last name" formControlName="contactNumber" required>
+        </mat-form-field><br>
+        <mat-form-field appearance="fill">
+          <mat-label>Birth Date</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;
+        <!-- <button type="button" class="btn btn-primary"mat-button matStepperNext>UPLOAD IMAGE</button> -->
+        <!-- //upload image -->
+        <!-- new code -->
+        <input type="file" class="btn btn-primary" (change)="onFileChange($event)" />
+        <button class="btn btn-danger btn-lg btn-block" (click)="onClick()">Show File</button>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Present Address</mat-label>
+            <textarea matInput placeholder="Last name" formControlName="presentAddress" required></textarea>
+          </mat-form-field>&nbsp;&nbsp;&nbsp;
+          <mat-form-field appearance="fill">
+            <mat-label>Permanent Address</mat-label>
+            <textarea matInput placeholder="Last name" formControlName="permanentAddress" required></textarea>
+          </mat-form-field>
+        </div>
+        <div>
+
+          <div>
+            <!-- <button mat-button matStepperNext>Next</button> -->
+          </div>
+        </div>
+      </mat-card>
+      <app-save-button></app-save-button>
+      <!-- <div>
+            <button  style="margin-left: 1100px;" (click)="goBack(stepper)"  mat-raised-button color="accent" type="button">Back</button>
+            &nbsp;&nbsp;&nbsp;<button (click)="goForward(stepper)"  class="btn btn-primary" type="button">Next</button>
+         </div>  -->
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Bank Details</ng-template>
+      <app-bank-component></app-bank-component>
+      <div>hi
+        <app-save-button></app-save-button>
+      </div>
+      <!-- <div>
+            <button  style="margin-left: 1100px;" (click)="goBack(stepper)"  mat-raised-button color="accent" type="button">Back</button>
+            &nbsp;&nbsp;&nbsp;<button (click)="goForward(stepper)"  class="btn btn-primary" type="button">Next</button>
+         </div>  -->
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Professional Detail</ng-template>
+      <app-professional-details></app-professional-details>
+      <div>
+        <button style="margin-left: 1100px;" (click)="goBack(stepper)" mat-raised-button color="accent"
+          type="button">Back</button>
+        &nbsp;&nbsp;&nbsp;<button (click)="goForward(stepper)" class="btn btn-primary" type="button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Education Details</ng-template>
+      <app-education-detail></app-education-detail>
+      <div>
+        <button style="margin-left: 1100px;" (click)="goBack(stepper)" mat-raised-button color="accent"
+          type="button">Back</button>
+        &nbsp;&nbsp;&nbsp;<button (click)="goForward(stepper)" class="btn btn-primary" type="button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Experience Detail</ng-template>
+      <app-experience-detail></app-experience-detail>
+      <div>
+        <button style="margin-left: 1100px;" (click)="goBack(stepper)" mat-raised-button color="accent"
+          type="button">Back</button>
+        &nbsp;&nbsp;&nbsp;<button (click)="goForward(stepper)" class="btn btn-primary" type="button">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Current Organizarion Detail</ng-template>
+      <app-current-organization-detail></app-current-organization-detail>
+      <div>
+        <button mat-button mat-raised-button color="accent" matStepperPrevious>FINISH</button>
+        <!-- <button  style="margin-left: 1100px;" (click)="goBack(stepper)"  mat-raised-button color="accent" type="button">Back</button>
+              &nbsp;&nbsp;&nbsp;<button (click)="goForward(stepper)"  class="btn btn-primary" type="button">Next</button> -->
+      </div>
+    </form>
+  </mat-step>
+  <!-- <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+         <button mat-button (click)="stepper.reset()">Reset</button> 
+      </div>
+    </mat-step> -->
+</mat-stepper>

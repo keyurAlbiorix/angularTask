@@ -71,9 +71,10 @@ body {
   <a [routerLink]="['/sportsList']" routerLinkActive="active current" *ngIf="heroService.loggedIn()">sports list</a>
   <a [routerLink]="['/product']" routerLinkActive="active current" *ngIf="heroService.loggedIn()">Product</a>
   <a [routerLink]="['/restapi']" routerLinkActive="active current" *ngIf="heroService.loggedIn()">restApis</a>
+  <a [routerLink]="['/strapper']" routerLinkActive="active current" *ngIf="heroService.loggedIn()">strapper</a>
   <a [routerLink]="['/login']" routerLinkActive="active current" *ngIf="!heroService.loggedIn()">Login</a>
   <a [routerLink]="['/register']" routerLinkActive="active current" *ngIf="!heroService.loggedIn()">register</a>
-  <button type="button" class="btn btn-primary btn-sm" (click)="logOut()" *ngIf="heroService.loggedIn()" style="margin-left: 600px;margin-top: 10px;">
+  <button type="button" class="btn btn-primary btn-sm" (click)="logOut()" *ngIf="heroService.loggedIn()" style="margin-left: 500px;margin-top: 10px;">
     <span class="glyphicon glyphicon-log-out"></span> Log out
   </button>
   <!-- <a href="javascript:void(0);" class="icon" onclick="myFunction()">

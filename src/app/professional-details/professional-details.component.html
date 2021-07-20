@@ -1,0 +1,46 @@
+
+<form [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()">
+    <mat-card>
+        <mat-card-title>Professional Detail</mat-card-title>
+        <mat-form-field appearance="fill">
+            <mat-label>Designation</mat-label>
+            <input matInput placeholder="Bank name" formControlName="Designation" required>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;
+        <mat-form-field appearance="fill">
+            <mat-label>Department</mat-label>
+            <input matInput placeholder="Account name" formControlName="Department" required>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;<br>
+        <mat-label>Experiance</mat-label>
+        <mat-form-field appearance="fill">
+            <mat-label>years</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                  {{food.viewValue}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;
+            <mat-form-field appearance="fill">
+              <mat-label>Month</mat-label>
+              <mat-select>
+                  <mat-option *ngFor="let food of month" [value]="month.value">
+                    {{food.viewValue}}
+                  </mat-option>
+                </mat-select>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;
+        <mat-form-field appearance="fill">
+            <mat-label>Current Location</mat-label>
+            <input matInput placeholder="IFSC Code" formControlName="currentLocation" required>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;<br>
+        <mat-form-field appearance="fill">
+            <mat-label>Skill</mat-label>
+            <input matInput placeholder="Aadhaar Card Number" formControlName="skill" required>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;
+        <mat-form-field appearance="fill">
+            <mat-label>Pan Card Number</mat-label>
+            <input matInput placeholder="Pan Card Number" formControlName="panCardNum" required>
+        </mat-form-field>
+        <br>
+           <div>
+           </div>
+     </mat-card>
+</form>

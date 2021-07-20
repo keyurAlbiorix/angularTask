@@ -1,0 +1,25 @@
+<!-- <hello name="{{ name }}"></hello>
+<p>
+  Start editing to see some magic happen :)
+</p> -->
+<mat-card-title>Experience Details</mat-card-title>
+<div [formGroup]="orderForm"><br>
+    <button  class="btn btn-danger btn-lg btn-block" (click)="addItem()">Add</button><br><br>
+    <mat-divider></mat-divider><br>
+    <div formArrayName="items"
+      *ngFor="let item of orderForm.get('items')['controls']; let i = index;">
+      <div [formGroupName]="i">
+        <input formControlName="companyName" placeholder="Company Name">&nbsp;&nbsp;
+        <input formControlName="position" placeholder="Position">&nbsp;&nbsp;
+        <input formControlName="totalYear" placeholder="Total Yeare">&nbsp;&nbsp;
+        <input formControlName="lastCtc" placeholder="Last CTC">&nbsp;&nbsp;
+        <button mat-raised-button>Basic</button>
+        <button mat-icon-button disabled aria-label="Example icon button with a open in new tab icon">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+      </div>
+     
+      <br>
+      <!-- Chosen name: {{ orderForm.controls.items.controls[i].controls.name.value }} -->
+    </div>
+    </div>

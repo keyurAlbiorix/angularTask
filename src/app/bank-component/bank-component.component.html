@@ -1,0 +1,33 @@
+
+<form [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()">
+    <mat-card>
+        <mat-card-title>Bank Detail{{userData}}</mat-card-title>
+        <mat-form-field appearance="fill">
+            <mat-label>Bank Name</mat-label>
+            <input matInput placeholder="Bank name" formControlName="bankName" required>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;
+        <mat-form-field appearance="fill">
+            <mat-label>Account Name</mat-label>
+            <input matInput placeholder="Account name" formControlName="accountName" required>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;<br>
+        <mat-form-field appearance="fill">
+            <mat-label>Bank Account Number</mat-label>
+            <input matInput placeholder=">Bank Account Number" formControlName="bankAcNum" required>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;
+        <mat-form-field appearance="fill">
+            <mat-label>IFSC Code</mat-label>
+            <input matInput placeholder="IFSC Code" formControlName="ifscCode" required>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;<br>
+        <mat-form-field appearance="fill">
+            <mat-label>Aadhaar Card Number</mat-label>
+            <input matInput placeholder="Aadhaar Card Number" formControlName="AadhaarNum" required>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;
+        <mat-form-field appearance="fill">
+            <mat-label>Pan Card Number</mat-label>
+            <input matInput placeholder="Pan Card Number" formControlName="panCardNum" required>
+        </mat-form-field>
+        <br>
+           <div>
+           </div>
+     </mat-card>
+</form>
