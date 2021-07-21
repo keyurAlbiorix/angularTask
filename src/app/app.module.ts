@@ -45,7 +45,7 @@ import { CurrentOrganizationDetailComponent } from './current-organization-detai
 import {MatDividerModule} from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { SaveButtonComponent } from './save-button/save-button.component';
-
+import { MatCheckboxModule } from '@angular/material/checkbox'; 
 @NgModule({
   declarations: [
     
@@ -72,6 +72,7 @@ import { SaveButtonComponent } from './save-button/save-button.component';
     SaveButtonComponent
   ],
   imports: [MatIconModule,
+    MatCheckboxModule,
     MatDividerModule,
     MatDatepickerModule,
     MatNativeDateModule,

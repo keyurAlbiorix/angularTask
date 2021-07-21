@@ -1,29 +1,26 @@
-<!-- <hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p> -->
-
+<form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
 <mat-card-title>Education Details</mat-card-title>
-<div [formGroup]="orderForm"><br>
-<button  class="btn btn-danger btn-lg btn-block" (click)="addItem()">Add</button><br><br>
-<mat-divider></mat-divider><br>
-<div formArrayName="items"
-  *ngFor="let item of orderForm.get('items')['controls']; let i = index;">
-  <div [formGroupName]="i">
-    <input formControlName="name" placeholder="Item name">&nbsp;&nbsp;
-    <input formControlName="description" placeholder="Item description">&nbsp;&nbsp;
-    <input formControlName="price" placeholder="Item price">&nbsp;&nbsp;
-    <button mat-raised-button>Basic</button>
-    <button mat-icon-button disabled aria-label="Example icon button with a open in new tab icon">
+<div><br>
+  <button class="btn btn-danger btn-lg btn-block" (click)="addItem()">Add</button><br><br>
+  <mat-divider></mat-divider><br>
+  <div formArrayName="items" *ngFor="let item of orderForm.get('items')['controls']; let i = index;">
+    <div [formGroupName]="i">
+      <input formControlName="name" placeholder="Item name">&nbsp;&nbsp;
+      <input formControlName="description" placeholder="Item description">&nbsp;&nbsp;
+      <input formControlName="price" placeholder="Item price">&nbsp;&nbsp;
+      <button mat-raised-button>Basic</button>
+      <button mat-icon-button disabled aria-label="Example icon button with a open in new tab icon">
         <mat-icon>open_in_new</mat-icon>
       </button>
+    </div>
+    <br>
+    <!-- Chosen name: {{ orderForm.controls.items.controls[i].controls.name.value }} -->
   </div>
- 
-  <br>
-  <!-- Chosen name: {{ orderForm.controls.items.controls[i].controls.name.value }} -->
 </div>
-</div>
+
+{{orderForm.value | json}}
 <div>
-  <button  mat-button matStepperPrevious type="submit" mat-raised-button color="accent" >Previous</button>&nbsp;&nbsp;&nbsp;
-  <button  mat-button matStepperNext type="submit" class="btn btn-primary" >Nexr</button>
-</div>
+  <button mat-button matStepperPrevious type="submit" mat-raised-button
+    color="accent">Previous</button>&nbsp;&nbsp;&nbsp;
+  <button mat-button matStepperNext type="submit" class="btn btn-primary">Next</button>
+</div></form>

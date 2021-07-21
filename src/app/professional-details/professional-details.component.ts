@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
+import { Router } from '@angular/router';
 import { HeroService } from '../hero.service';
 
 @Component({
@@ -16,17 +17,13 @@ export class ProfessionalDetailsComponent implements OnInit {
   chosenYearDate: Date;
   chosenMonthDate: Date = new Date(2020,0,1);
   bankNameMat: any;
-  bankData:any={}
-  // constructor(private _formBuilder: FormBuilder, private cd: ChangeDetectorRef) { }
-
-  constructor(private _formBuilder: FormBuilder, private cd: ChangeDetectorRef,
+  professionalDetail: any;
+  constructor(private _formBuilder: FormBuilder, private router: Router,
     private heroService: HeroService) { 
-      this.heroService.bankNameMat.subscribe(res=>{
-        this.bankNameMat = res;
-        console.log("res.......",res)
+      this.heroService.professionalDetail.subscribe(res=>{
+        this.professionalDetail = res;
+        console.log("res",res)
       })
-      this.bankData=this.bankNameMat
-      console.log(" this.bankData.......", this.bankData)
     }
 
   ngOnInit(): void {
@@ -39,7 +36,7 @@ export class ProfessionalDetailsComponent implements OnInit {
       });
   }
   onSubmit(){
-
+    this.heroService.professionalDetail.next(this.firstFormGroup.value)
   }
   goBack(stepper: MatStepper){
     stepper.previous();

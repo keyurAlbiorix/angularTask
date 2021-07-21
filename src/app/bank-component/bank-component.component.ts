@@ -27,7 +27,6 @@ export class BankComponentComponent implements OnInit {
         console.log("res",res)
       })
     }
-
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
       bankName: ['', Validators.required],

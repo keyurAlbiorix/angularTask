@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators, FormGroupDirective } from '@angular/forms';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-education-detail',
@@ -9,17 +10,33 @@ import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@ang
 export class EducationDetailComponent implements OnInit {
   orderForm: FormGroup;
   items: FormArray;
+  educationalDetail: any;
 
-  constructor(private formBuilder: FormBuilder) { }
+  // constructor(private formBuilder: FormBuilder,private parent: FormGroupDirective) { }
   
+  constructor(private _formBuilder: FormBuilder, 
+    private heroService: HeroService) { 
+      this.heroService.educationalDetail.subscribe(res=>{
+        this.educationalDetail = res;
+        console.log("res",res)
+      })
+    }
   ngOnInit() {
     this.orderForm = new FormGroup({
       items: new FormArray([])
+     
     });
+    console.log("this.orderForm",  this.orderForm)
+    // this.orderForm = this.parent.form;
+    // this.orderForm.addControl('address', new FormGroup({
+    //   name: new FormControl(),
+    //   description: new FormControl(),
+    //   price: new FormControl()
+    // }))
   }
   
   createItem(): FormGroup {
-    return this.formBuilder.group({
+    return this._formBuilder.group({
       name: '',
       description: '',
       price: ''
@@ -29,5 +46,11 @@ export class EducationDetailComponent implements OnInit {
   addItem(): void {
     this.items = this.orderForm.get('items') as FormArray;
     this.items.push(this.createItem());
+    console.log("this.items.push",this.items.push)
+  }
+  onSubmit(){
+    this.heroService.educationalDetail.next(this.orderForm.value)
+    console.log("this.orderForm",this.orderForm.value)
   }
 }
+ 

@@ -13,6 +13,11 @@ export class HeroService {
   // data = this.dataSource.asObservable();
 
   public bankNameMat = new BehaviorSubject<any>('');
+  public personalDetail = new BehaviorSubject<any>('');
+  public professionalDetail = new BehaviorSubject<any>('');
+  public educationalDetail = new BehaviorSubject<any>('');
+  public experianceDetail = new BehaviorSubject<any>('');
+  public currentOrganizationDetail = new BehaviorSubject<any>('');
 
   editUser(newUser){
     this.userData.next(newUser);

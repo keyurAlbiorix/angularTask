@@ -1,29 +1,123 @@
-
 <form [formGroup]="firstFormGroup" (ngSubmit)="onSubmit()">
     <mat-card>
         <mat-card-title>Current Organization Detail</mat-card-title>
-        <mat-form-field appearance="fill">
-            <mat-label>Joinnig Date</mat-label>
-            <input matInput  [matDatepicker]="picker">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>&nbsp;&nbsp;&nbsp;
-        <mat-form-field appearance="fill">
-            <mat-label>Next Appraisal Date</mat-label>
-            <input matInput  [matDatepicker]="picker">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>&nbsp;&nbsp;&nbsp;<br>
-        <mat-form-field appearance="fill">
+        <div class="form-row">
+            <mat-form-field class="col-md-5" appearance="fill">
+                <mat-label>Joinnig Date</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;
+            <mat-form-field class="col-md-5" appearance="fill">
+                <mat-label>Next Appraisal Date</mat-label>
+                <input matInput [matDatepicker]="picker1">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;<br>
+        </div>
+        <mat-form-field class="col-md-5" appearance="fill">
             <mat-label>Current CTC</mat-label>
             <input matInput placeholder="Current CTC" formControlName="currentCtc" required>
         </mat-form-field>&nbsp;&nbsp;&nbsp;
         <br>
-           <div>
-           </div>
-           <div>
-            <button  mat-button matStepperPrevious type="submit" class="btn btn-primary" >FINISH</button>
+        <div>
+        </div>
+        <div>
+            <button mat-button matStepperPrevious type="submit" class="btn btn-primary">FINISH</button>
             <!-- <button  mat-button matStepperNext type="submit" class="btn btn-primary" >Nexr</button> -->
         </div>
-     </mat-card>
+    </mat-card>
+
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <label *ngIf="personalDetail.firstName == !null">Personal Details</label>
+                    {{personalDetail.firstName}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.middelName}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.lastName}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.email}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.mobileNumber}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.contactNumber}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.contactNumber}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.presentAddress}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.permanentAddress}}</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div>
+        <table><tr><td>
+       {{bankNameMat.AadhaarNum}}</td></tr>
+         <tr><td>
+        {{bankNameMat.accountName}}</td></tr>
+         <tr><td>
+         {{bankNameMat.bankAcNum}}</td></tr>
+         <tr><td>
+         {{bankNameMat.bankName}}</td></tr>
+         <tr><td>
+         {{bankNameMat.ifscCode}}</td></tr>
+         <tr><td>
+        {{bankNameMat.panCardNum}}</td></tr>
+        </table>
+       </div>
+
+       <div>
+        <table><tr><td>
+       {{professionalDetail.Designation}}</td></tr>
+         <tr><td>
+        {{professionalDetail.Department}}</td></tr>
+         <tr><td>
+         {{professionalDetail.currentLocation}}</td></tr>
+         <tr><td>
+         {{professionalDetail.skill}}</td></tr>
+         <!-- <tr><td>
+         {{professionalDetail.ifscCode}}</td></tr>
+         <tr><td>
+        {{professionalDetail.panCardNum}}</td></tr> -->
+        </table>
+       </div>
+
+       <div>  <tr><td>
+        {{educationalDetail}}</td></tr>
+        <table *ngFor="let item of educationalDetail">
+          
+         <tr><td> 
+        {{item.name}}</td></tr>
+         <tr><td>
+         {{item.description}}</td></tr>
+         <tr><td>
+         {{item.price}}</td></tr>
+         <!-- <tr><td>
+
+         {{professionalDetail.ifscCode}}</td></tr>
+         <tr><td>
+        {{professionalDetail.panCardNum}}</td></tr> -->
+        </table>
+       </div>
 </form>

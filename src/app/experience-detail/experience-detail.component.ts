@@ -12,25 +12,33 @@ export class ExperienceDetailComponent implements OnInit {
   items: FormArray;
 
   constructor(private formBuilder: FormBuilder) { }
-  
+
   ngOnInit() {
     this.orderForm = new FormGroup({
-      items: new FormArray([])
+      items: new FormArray([
+        // companyName:['', Validators.required],
+        // position: ['', Validators.required],
+        // totalYear: ['', Validators.required],
+        // lastCtc: ['', Validators.required]
+      ])
+      // bankName: ['', Validators.required],
     });
+   
   }
-  
+
   createItem(): FormGroup {
-    return this.formBuilder.group({
+    return this.formBuilder.group({      
       companyName: '',
       position: '',
       totalYear: '',
-      lastCtc:''
+      lastCtc: ''
     });
   }
-  
+
   addItem(): void {
     this.items = this.orderForm.get('items') as FormArray;
     this.items.push(this.createItem());
+    console.log("this.order",this.orderForm)
   }
-
+  onSubmit() { }
 }

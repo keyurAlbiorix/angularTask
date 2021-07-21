@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { MatStepper } from '@angular/material/stepper';
+import { Router } from '@angular/router';
 import { HeroService } from '../hero.service';
 
 @Component({
@@ -23,10 +24,18 @@ export class StrapperComponent implements OnInit {
   fileName: string;
   fileData: any;
 
-  constructor(private _formBuilder: FormBuilder, private cd: ChangeDetectorRef,
-    private heroService: HeroService) { }
+  marked = false;
+  theCheckbox = false;
+  personalDetail: any;
 
-
+  // constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, private router: Router, private cd: ChangeDetectorRef,
+    private heroService: HeroService) { 
+      this.heroService.personalDetail.subscribe(res=>{
+        this.personalDetail = res;
+        console.log("res",res)
+      })
+    }
   public onFileChange(event) {
     const reader = new FileReader();
 
@@ -88,50 +97,11 @@ handleFileInput(file: FileList) {
   }
   reader.readAsDataURL(this.fileToUpload);
 }
-// @ViewChild('fileInput') el: ElementRef;
-// imageUrl: any =
-// 'https://i.pinimg.com/236x/d6/27/d9/d627d9cda385317de4812a4f7bd922e9--man--iron-man.jpg';
-// editFile: boolean = true;
-// removeUpload: boolean = false;
-
-// uploadFile(event) {
-//   let reader = new FileReader(); // HTML5 FileReader API
-//   let file = event.target.files[0];
-//   if (event.target.files && event.target.files[0]) {
-//     reader.readAsDataURL(file);
-
-//     // When file uploads set it to file formcontrol
-//     reader.onload = () => {
-//       this.imageUrl = reader.result;
-//       this.firstFormGroup.patchValue({
-//         file: reader.result
-//       });
-//       this.editFile = false;
-//       this.removeUpload = true;
-//     };
-//     // ChangeDetectorRef since file is loading outside the zone
-//     this.cd.markForCheck();
-//   }
-// }
-// removeUploadedFile() {
-//   let newFileList = Array.from(this.el.nativeElement.files);
-//   this.imageUrl =
-//     'https://i.pinimg.com/236x/d6/27/d9/d627d9cda385317de4812a4f7bd922e9--man--iron-man.jpg';
-//   this.editFile = true;
-//   this.removeUpload = false;
-//   this.firstFormGroup.patchValue({
-//     file: [null]
-//   });
-// }
-
-// // Submit Registration Form
 onSubmit() {
-//   this.submitted = true;
-//   if (!this.firstFormGroup.valid) {
-//     alert('Please fill all the required fields to create a super hero!');
-//     // return false;
-//   } else {
-//     console.log(this.firstFormGroup.value);
-//   }
+  this.heroService.personalDetail.next(this.firstFormGroup.value)
+}
+toggleVisibility(e){
+  this.marked= e.checked;
+  console.log(" e.target.checked", e)
 }
 }
