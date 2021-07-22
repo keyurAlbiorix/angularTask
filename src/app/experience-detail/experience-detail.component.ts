@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-experience-detail',
@@ -10,9 +11,17 @@ export class ExperienceDetailComponent implements OnInit {
 
   orderForm: FormGroup;
   items: FormArray;
+  experianceDetail: any;
 
-  constructor(private formBuilder: FormBuilder) { }
+  // constructor(private formBuilder: FormBuilder) { }
 
+  constructor(private formBuilder: FormBuilder, 
+    private heroService: HeroService) { 
+      this.heroService.experianceDetail.subscribe(res=>{
+        this.experianceDetail = res;
+        console.log("res",res)
+      })
+    }
   ngOnInit() {
     this.orderForm = new FormGroup({
       items: new FormArray([
@@ -40,5 +49,8 @@ export class ExperienceDetailComponent implements OnInit {
     this.items.push(this.createItem());
     console.log("this.order",this.orderForm)
   }
-  onSubmit() { }
+  onSubmit() { 
+    this.heroService.experianceDetail.next(this.orderForm.value)
+
+  }
 }

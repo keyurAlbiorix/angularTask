@@ -103,18 +103,37 @@
         </table>
        </div>
 
-       <div>  <tr><td>
+              <!-- education Details -->
+       <div *ngIf="educationalDetail && (educationalDetail != undefined || educationalDetail != '')">  <tr><td>educationDetails:
         {{educationalDetail}}</td></tr>
-        <table *ngFor="let item of educationalDetail">
-          
+        <table *ngFor="let item of educationalDetail.items">
          <tr><td> 
         {{item.name}}</td></tr>
          <tr><td>
          {{item.description}}</td></tr>
          <tr><td>
          {{item.price}}</td></tr>
-         <!-- <tr><td>
+         <!-- <tr><td>  
+         {{professionalDetail.ifscCode}}</td></tr>
+         <tr><td>
+        {{professionalDetail.panCardNum}}</td></tr> -->
+        </table>
+       </div>
 
+       <!-- experiance Details -->
+       <div>  <tr><td>educationDetails:
+        <!-- *ngIf="educationalDetail && (educationalDetail != undefined || educationalDetail != '')" -->
+        {{educationalDetail}}</td></tr>
+        <table *ngFor="let item of experianceDetail.items">
+         <tr><td> 
+        {{item.companyName}}</td></tr>
+         <tr><td>
+         {{item.lastCtc}}</td></tr>
+         <tr><td>
+         {{item.position}}</td></tr>
+         <tr><td>
+            {{item.totalYear}}</td></tr>
+         <!-- <tr><td>  
          {{professionalDetail.ifscCode}}</td></tr>
          <tr><td>
         {{professionalDetail.panCardNum}}</td></tr> -->

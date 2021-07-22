@@ -14,6 +14,7 @@ export class CurrentOrganizationDetailComponent implements OnInit {
   bankNameMat: any;
   professionalDetail: any;
   educationalDetail: any;
+  experianceDetail: any;
   // constructor(private _formBuilder: FormBuilder) { }
   constructor(private _formBuilder: FormBuilder, private router: Router,
     private heroService: HeroService) { 
@@ -30,10 +31,15 @@ export class CurrentOrganizationDetailComponent implements OnInit {
         this.professionalDetail = res;
         console.log("res",res)
       })
-
       
       this.heroService.educationalDetail.subscribe(res=>{
         this.educationalDetail = res;
+        console.log("res",res)
+      })
+
+            
+      this.heroService.experianceDetail.subscribe(res=>{
+        this.experianceDetail = res;
         console.log("res",res)
       })
     }

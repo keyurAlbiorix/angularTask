@@ -11,7 +11,7 @@ export class EducationDetailComponent implements OnInit {
   orderForm: FormGroup;
   items: FormArray;
   educationalDetail: any;
-
+  isDisabled:any = true; 
   // constructor(private formBuilder: FormBuilder,private parent: FormGroupDirective) { }
   
   constructor(private _formBuilder: FormBuilder, 
@@ -44,6 +44,7 @@ export class EducationDetailComponent implements OnInit {
   }
   
   addItem(): void {
+    this.isDisabled = true; 
     this.items = this.orderForm.get('items') as FormArray;
     this.items.push(this.createItem());
     console.log("this.items.push",this.items.push)
@@ -51,6 +52,18 @@ export class EducationDetailComponent implements OnInit {
   onSubmit(){
     this.heroService.educationalDetail.next(this.orderForm.value)
     console.log("this.orderForm",this.orderForm.value)
+  }
+  test() {
+    // console.log("this.orderForm.controls['name']",this.orderForm.controls['name'].enable());
+
+    this.isDisabled = !this.isDisabled;
+  //   if(this.isDisabled){
+  //     this.orderForm.controls['name'].disable();
+  //   }
+  //   else{
+  //     this.orderForm.controls['name'].enable();
+  //   }
+  // // this.isDisabled ? this.orderForm.controls['name'].disable() : this.orderForm.controls['name'].enable()
   }
 }
  

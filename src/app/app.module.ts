@@ -45,10 +45,12 @@ import { CurrentOrganizationDetailComponent } from './current-organization-detai
 import {MatDividerModule} from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { SaveButtonComponent } from './save-button/save-button.component';
-import { MatCheckboxModule } from '@angular/material/checkbox'; 
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { PersonalDetailComponent } from './personal-detail/personal-detail.component'; 
+
 @NgModule({
   declarations: [
-    
+    // InputDisabledDirective,
     AppComponent,
     TestComponent,
     NavbarComponent,
@@ -69,7 +71,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     EducationDetailComponent,
     ExperienceDetailComponent,
     CurrentOrganizationDetailComponent,
-    SaveButtonComponent
+    SaveButtonComponent,
+    PersonalDetailComponent
   ],
   imports: [MatIconModule,
     MatCheckboxModule,

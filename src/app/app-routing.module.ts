@@ -10,6 +10,7 @@ import { HeroService } from './hero.service';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PersonalDetailComponent } from './personal-detail/personal-detail.component';
 import { ProductComponent } from './product/product.component';
 import { ProfessionalDetailsComponent } from './professional-details/professional-details.component';
 import { RegisterComponent } from './register/register.component';
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path: 'hero', component:HeroService},
   {path: 'sports', component:SportsComponent,canActivate: [AuthGuard]},
   {path: 'bankComponent', component:BankComponentComponent,canActivate: [AuthGuard]},
+  {path: 'personaldetail', component:PersonalDetailComponent,canActivate: [AuthGuard]},
   {path: 'ProfessionalDetailsComponent', component:ProfessionalDetailsComponent,canActivate: [AuthGuard]},
   {path: 'EducationDetailComponent', component:EducationDetailComponent,canActivate: [AuthGuard]},
   {path: 'saveButon', component:SaveButtonComponent,canActivate: [AuthGuard]},

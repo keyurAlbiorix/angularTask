@@ -5,10 +5,11 @@
   <mat-divider></mat-divider><br>
   <div formArrayName="items" *ngFor="let item of orderForm.get('items')['controls']; let i = index;">
     <div [formGroupName]="i">
-      <input formControlName="name" placeholder="Item name">&nbsp;&nbsp;
-      <input formControlName="description" placeholder="Item description">&nbsp;&nbsp;
-      <input formControlName="price" placeholder="Item price">&nbsp;&nbsp;
+      <input formControlName="name" placeholder="Education Name">&nbsp;&nbsp;
+      <input formControlName="description"  placeholder="University Name">&nbsp;&nbsp;
+      <input formControlName="price" placeholder="Result">&nbsp;&nbsp;
       <button mat-raised-button>Basic</button>
+      <button (click)="test()">Disable textbox{{isDisabled}}</button>
       <button mat-icon-button disabled aria-label="Example icon button with a open in new tab icon">
         <mat-icon>open_in_new</mat-icon>
       </button>
