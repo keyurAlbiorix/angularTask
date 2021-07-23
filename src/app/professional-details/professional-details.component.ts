@@ -18,6 +18,8 @@ export class ProfessionalDetailsComponent implements OnInit {
   chosenMonthDate: Date = new Date(2020,0,1);
   bankNameMat: any;
   professionalDetail: any;
+  fileName: any;
+  fileData:any;
   constructor(private _formBuilder: FormBuilder, private router: Router,
     private heroService: HeroService) { 
       this.heroService.professionalDetail.subscribe(res=>{
@@ -74,4 +76,28 @@ months:any = [
   {value: 'pizza-1', viewValue: '10 month'},
   {value: 'tacos-2', viewValue: '11 month'}
 ];
+
+public onFileChange(event) {
+  const reader = new FileReader();
+
+  if (event.target.files && event.target.files.length) {
+    this.fileName = event.target.files[0].name;
+    const [file] = event.target.files;
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      localStorage.setItem(this.fileName, reader.result as string);
+    };
+  }
+}
+onClick() {
+  this.fileData = localStorage.getItem(this.fileName);
+  console.log("fileData",this.fileData)
+  // window.open("Image");
+//   setTimeout(function () 
+//   {
+//     document.body.appendChild(document.createElement("iframe"),).src = fileData;
+//   }, 0);
+//   console.log("document.createelement", document.createElement)
+// }
+}
 }

@@ -1,6 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { HeroService } from '../hero.service';
 
 @Component({
@@ -12,22 +11,23 @@ export class PersonalDetailComponent implements OnInit {
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  submitted: boolean;
+  // submitted: boolean;
   BankComponentComponent: '';
 
   percentDone: number;
   uploadSuccess: boolean;
   fileName: string;
   fileData: any;
-
   marked = false;
   theCheckbox = false;
   personalDetail: any;
-   win:any;
+  win: any;
   name = 'Angular';
   fileToUpload: any;
   imageUrl: any;
-  // constructor(private _formBuilder: FormBuilder) { }
+  submitted = false;
+  submittedData:any= {};
+
   constructor(private _formBuilder: FormBuilder,
     private heroService: HeroService) {
     this.heroService.personalDetail.subscribe(res => {
@@ -47,20 +47,12 @@ export class PersonalDetailComponent implements OnInit {
     }
   }
   onClick() {
-    const fileData = localStorage.getItem(this.fileName);
-    setTimeout(function () {
-      document.body.appendChild(
-        // this.win = window.open();
-        // this.win.document.write('<iframe width="560" height="315" src="//www.youtube.com/embed/mTWfqi3-3qU" frameborder="0" allowfullscreen></iframe>')
-        document.createElement("iframe"),
-      ).src = fileData;
-    }, 0);
-    console.log("document.createelement",document.createElement)
+     this.fileData = localStorage.getItem(this.fileName);
   }
 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
+    
       firstName: ['', Validators.required],
       middelName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -69,7 +61,8 @@ export class PersonalDetailComponent implements OnInit {
       contactNumber: ['', Validators.required],
       presentAddress: ['', Validators.required],
       permanentAddress: ['', Validators.required],
-      file: [null]
+      file: [null],
+      isSameAddress: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
@@ -86,22 +79,20 @@ export class PersonalDetailComponent implements OnInit {
     reader.readAsDataURL(this.fileToUpload);
   }
   onSubmit() {
+    console.log("nnnnn",this.firstFormGroup);
+    
     this.heroService.personalDetail.next(this.firstFormGroup.value)
+    this.submitted = true;
+    this.submittedData = this.firstFormGroup.value;
   }
   toggleVisibility(firstFormGroup) {
     firstFormGroup.permanentAddress.value = firstFormGroup.presentAddress.value
   }
-  //  copy()
-  // {
-  //   document.getElementById('n2').value = textbox.value;
-  // }
-  // var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope) {
-  $scope.showPassword = '';
-  $scope.password = '';
-  $scope.checkboxModel = false;
-  $scope.showHidePassword = function(checkboxModel) {
-    $scope.showPassword = checkboxModel ? '' : $scope.password;
+  checked(value) {
+    if (value) {
+      this.firstFormGroup.patchValue({
+        permanentAddress: this.firstFormGroup.controls.presentAddress.value
+      });
+    }
   }
-});
 }

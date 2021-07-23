@@ -41,6 +41,11 @@
            <div>
             <button  mat-button matStepperPrevious type="submit" mat-raised-button color="accent" >Previous</button>&nbsp;&nbsp;&nbsp;
             <button  mat-button matStepperNext type="submit" class="btn btn-primary" >Next</button>
+            
+            <input type="file" class="btn btn-primary" (change)="onFileChange($event)" />
+            <button class="btn btn-danger btn-lg btn-block" (click)="onClick()">Show File</button>
+
         </div>
      </mat-card>
+     <img [src]="fileData" alt="">
 </form>
