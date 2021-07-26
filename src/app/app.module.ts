@@ -46,7 +46,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { SaveButtonComponent } from './save-button/save-button.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { PersonalDetailComponent } from './personal-detail/personal-detail.component'; 
+import { PersonalDetailComponent } from './personal-detail/personal-detail.component';
+import { EmsComponentComponent } from './ems-component/ems-component.component'; 
+// import { JwPaginationModule } from 'jw-angular-pagination';
 
 @NgModule({
   declarations: [
@@ -72,9 +74,11 @@ import { PersonalDetailComponent } from './personal-detail/personal-detail.compo
     ExperienceDetailComponent,
     CurrentOrganizationDetailComponent,
     SaveButtonComponent,
-    PersonalDetailComponent
+    PersonalDetailComponent,
+    EmsComponentComponent
   ],
   imports: [MatIconModule,
+    // JwPaginationModule,
     MatCheckboxModule,
     MatDividerModule,
     MatDatepickerModule,

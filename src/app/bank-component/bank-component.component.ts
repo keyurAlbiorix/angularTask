@@ -19,6 +19,7 @@ export class BankComponentComponent implements OnInit {
   submitted: boolean;
   userData: string;
   bankNameMat: any;
+  personalDetail: any;
 
   constructor(private _formBuilder: FormBuilder, private router: Router, private cd: ChangeDetectorRef,
     private heroService: HeroService) { 
@@ -26,6 +27,10 @@ export class BankComponentComponent implements OnInit {
         this.bankNameMat = res;
         console.log("res",res)
       })
+      // this.heroService.personalDetail.subscribe(res=>{
+      //   this.personalDetail = res;
+      //   console.log("res",res)
+      // })
     }
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
@@ -40,7 +45,8 @@ export class BankComponentComponent implements OnInit {
   }
   onSubmit() {
     this.heroService.bankNameMat.next(this.firstFormGroup.value)
-    console.log(this.firstFormGroup.value,":: firstFormGroup")
+    // this.heroService.personalDetail.next(this.firstFormGroup.value)
+    // console.log(this.firstFormGroup.value,":: firstFormGroup")
     // this.router.navigate(['/ProfessionalDetailsComponent']);
   }
 }

@@ -102,9 +102,9 @@
         {{professionalDetail.panCardNum}}</td></tr> -->
         </table>
        </div>
-
               <!-- education Details -->
-       <div *ngIf="educationalDetail && (educationalDetail != undefined || educationalDetail != '')">  <tr><td>educationDetails:
+       <div *ngIf="educationalDetail && (educationalDetail != undefined || educationalDetail != '')">  <tr><td>
+           <!-- educationDetails: -->
         {{educationalDetail}}</td></tr>
         <table *ngFor="let item of educationalDetail.items">
          <tr><td> 
@@ -121,7 +121,8 @@
        </div>
 
        <!-- experiance Details -->
-       <div>  <tr><td>educationDetails:
+       <div>  <tr><td>
+           <!-- educationDetails: -->
         <!-- *ngIf="educationalDetail && (educationalDetail != undefined || educationalDetail != '')" -->
         {{educationalDetail}}</td></tr>
         <table *ngFor="let item of experianceDetail.items">

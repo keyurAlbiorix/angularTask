@@ -5,6 +5,7 @@ import { BankComponentComponent } from './bank-component/bank-component.componen
 import { CurrentOrganizationDetailComponent } from './current-organization-detail/current-organization-detail.component';
 import { DisplayDataComponent } from './display-data/display-data.component';
 import { EducationDetailComponent } from './education-detail/education-detail.component';
+import { EmsComponentComponent } from './ems-component/ems-component.component';
 import { ExperienceDetailComponent } from './experience-detail/experience-detail.component';
 import { HeroService } from './hero.service';
 import { HomeComponent } from './home/home.component';
@@ -44,6 +45,7 @@ const routes: Routes = [
   {path: 'ExperienceDetailComponent', component:ExperienceDetailComponent,canActivate: [AuthGuard]},
   {path: 'CurrentOrganizationDetailComponent', component:CurrentOrganizationDetailComponent,canActivate: [AuthGuard]},
   {path: 'strapper', component:StrapperComponent,canActivate: [AuthGuard]},
+  {path: 'Ems', component:EmsComponentComponent,canActivate: [AuthGuard]},
   {path: 'restapi', component:RestApiComponent, canActivate: [AuthGuard]},
   {path: 'sportsList', component:SportsListComponent, canActivate: [AuthGuard]},
   {path: 'product', component:ProductComponent,canActivate: [AuthGuard]},

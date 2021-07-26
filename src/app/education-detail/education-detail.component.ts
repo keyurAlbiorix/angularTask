@@ -12,7 +12,7 @@ export class EducationDetailComponent implements OnInit {
   items: FormArray;
   educationalDetail: any;
   isDisabled:any = true; 
-  // constructor(private formBuilder: FormBuilder,private parent: FormGroupDirective) { }
+  disableTextbox: boolean = false;
   
   constructor(private _formBuilder: FormBuilder, 
     private heroService: HeroService) { 
@@ -24,20 +24,12 @@ export class EducationDetailComponent implements OnInit {
   ngOnInit() {
     this.orderForm = new FormGroup({
       items: new FormArray([])
-     
     });
-    console.log("this.orderForm",  this.orderForm)
-    // this.orderForm = this.parent.form;
-    // this.orderForm.addControl('address', new FormGroup({
-    //   name: new FormControl(),
-    //   description: new FormControl(),
-    //   price: new FormControl()
-    // }))
   }
   
   createItem(): FormGroup {
     return this._formBuilder.group({
-      name: '',
+      name: {value: '', disabled : true},
       description: '',
       price: ''
     });
@@ -51,19 +43,14 @@ export class EducationDetailComponent implements OnInit {
   }
   onSubmit(){
     this.heroService.educationalDetail.next(this.orderForm.value)
-    console.log("this.orderForm",this.orderForm.value)
   }
   test() {
-    // console.log("this.orderForm.controls['name']",this.orderForm.controls['name'].enable());
-
     this.isDisabled = !this.isDisabled;
-  //   if(this.isDisabled){
-  //     this.orderForm.controls['name'].disable();
-  //   }
-  //   else{
-  //     this.orderForm.controls['name'].enable();
-  //   }
-  // // this.isDisabled ? this.orderForm.controls['name'].disable() : this.orderForm.controls['name'].enable()
+  }
+  toggleDisable() {
+    console.log("calledtoggle")
+    // this.orderForm.controls['name'].Enable() =
+     console.log(" this.orderForm.controls['name'].disable()", this.orderForm.get('items')[0].controls[0].controls['name'])
   }
 }
  
