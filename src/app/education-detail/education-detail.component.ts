@@ -18,7 +18,6 @@ export class EducationDetailComponent implements OnInit {
     private heroService: HeroService) { 
       this.heroService.educationalDetail.subscribe(res=>{
         this.educationalDetail = res;
-        console.log("res",res)
       })
     }
   ngOnInit() {
@@ -29,7 +28,7 @@ export class EducationDetailComponent implements OnInit {
   
   createItem(): FormGroup {
     return this._formBuilder.group({
-      name: {value: '', disabled : true},
+      name:  '',
       description: '',
       price: ''
     });
@@ -39,7 +38,6 @@ export class EducationDetailComponent implements OnInit {
     this.isDisabled = true; 
     this.items = this.orderForm.get('items') as FormArray;
     this.items.push(this.createItem());
-    console.log("this.items.push",this.items.push)
   }
   onSubmit(){
     this.heroService.educationalDetail.next(this.orderForm.value)
@@ -48,9 +46,7 @@ export class EducationDetailComponent implements OnInit {
     this.isDisabled = !this.isDisabled;
   }
   toggleDisable() {
-    console.log("calledtoggle")
     // this.orderForm.controls['name'].Enable() =
-     console.log(" this.orderForm.controls['name'].disable()", this.orderForm.get('items')[0].controls[0].controls['name'])
   }
 }
  

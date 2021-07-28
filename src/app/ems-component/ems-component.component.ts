@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 import { HeroService } from '../hero.service';
 
 @Component({
@@ -8,15 +8,15 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./ems-component.component.css']
 })
 export class EmsComponentComponent implements OnInit {
-  // pageOfItems: Array<any>;
   startIndex = 0;
   endIndex = 5;
-  data$:Observable<any>;
+  data$: Observable<any>;
   personalDetail: any;
-  
-  constructor( private heroService: HeroService) {
+  perdata: any;
+  professionalData: any;
+  constructor(private heroService: HeroService) {
     this.personalDetailFunc()
-   }
+  }
 
   personalDetailFunc() {
     this.heroService.personalDetail.subscribe(res => {
@@ -25,26 +25,32 @@ export class EmsComponentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      // this.items = Array(150).fill(0).map((x, i) => ({ id: (i + 1), name: `Item ${i + 1}`}));
+    let personalDetailData = JSON.parse(localStorage.getItem('personalDetail'))
+    this.perdata = personalDetailData
+    console.log("this.perdata",this.perdata )
+      // this.personalDetail = JSON.parse(localStorage.getItem('keyur'));
+    // this.myForm = JSON.parse(localStorage.getItem('Users'));
+    // this.items = Array(150).fill(0).map((x, i) => ({ id: (i + 1), name: `Item ${i + 1}`}));
   }
-  getArrayLenght(length){
-    return new Array(length/20)
-  } 
-  getIndex(pageIndex){
+  getArrayLenght(length) {
+    return new Array(length / 20)
+  }
+  getIndex(pageIndex) {
     this.startIndex = pageIndex * 5;
-   this.endIndex = this.startIndex + 5;
-   console.log(this.startIndex);
+    this.endIndex = this.startIndex + 5;
   }
-  prevIndex(length){
+  prevIndex(length) {
     this.startIndex = length * 0;
-    console.log(this.startIndex)
   }
-  nextIndex(endIndex){
+  nextIndex(endIndex) {
     this.endIndex++
-    console.log(this.endIndex)
   }
   onChangePage(pageOfItems: Array<any>) {
-    // update current page of items
-    // this.pageOfItems = pageOfItems;
-}
+
+  }
+  ondelete(deleteme){
+    console.log("deleteme",deleteme)
+    this.personalDetail.splice(this.personalDetail.indexOf(deleteme),1)
+    console.log("this.personalDetail", this.personalDetail.splice)
+  }
 }

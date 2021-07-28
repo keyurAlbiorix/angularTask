@@ -1,8 +1,7 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import { MatStepper } from '@angular/material/stepper';
-import { Router } from '@angular/router';
+
 import { HeroService } from '../hero.service';
 
 @Component({
@@ -16,6 +15,11 @@ import { HeroService } from '../hero.service';
 export class StrapperComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  
+  thirdFormGroup:FormGroup;
+  fourthFormGroup:FormGroup;
+  fifthFormGroup:FormGroup;
+  sixFormGroup:FormGroup;
   submitted: boolean;
   BankComponentComponent: '';
 
@@ -32,21 +36,18 @@ export class StrapperComponent implements OnInit {
     private heroService: HeroService) {
     this.heroService.personalDetail.subscribe(res => {
       this.personalDetail = res;
-      console.log("res", res)
     })
   }
 
   onClick() {
 
-  }
-
-
+  } 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
 
     });
     this.secondFormGroup = this._formBuilder.group({
-    
+
     });
   }
 

@@ -4,27 +4,26 @@
         <div class="form-row">
             <mat-form-field class="col-md-5" appearance="fill">
                 <mat-label>Joinnig Date</mat-label>
-                <input matInput [matDatepicker]="picker">
+                <input matInput formControlName="joiningDate" [matDatepicker]="picker" required>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>&nbsp;&nbsp;&nbsp;
             <mat-form-field class="col-md-5" appearance="fill">
                 <mat-label>Next Appraisal Date</mat-label>
-                <input matInput [matDatepicker]="picker1">
+                <input matInput formControlName="nextaprslDate" [matDatepicker]="picker1" required>
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>&nbsp;&nbsp;&nbsp;<br>
         </div>
         <mat-form-field class="col-md-5" appearance="fill">
             <mat-label>Current CTC</mat-label>
-            <input matInput placeholder="Current CTC" formControlName="currentCtc" required>
+            <input type="number" matInput placeholder="Current CTC" formControlName="currentCtc" required>
         </mat-form-field>&nbsp;&nbsp;&nbsp;
         <br>
         <div>
         </div>
         <div>
-            <button mat-button matStepperPrevious type="submit" class="btn btn-primary">FINISH</button>
-            <!-- <button  mat-button matStepperNext type="submit" class="btn btn-primary" >Nexr</button> -->
+            <button mat-button type="submit" class="btn btn-primary">FINISH</button>
         </div>
     </mat-card>
 
@@ -46,7 +45,9 @@
             </tr>
             <tr>
                 <td>
-                    {{personalDetail.email}}</td>
+                    {{personalDetail.email}}
+                    {{personalDetail.birthDate| date}}
+                </td>
             </tr>
             <tr>
                 <td>
@@ -70,74 +71,101 @@
             </tr>
         </table>
     </div>
-    
+
     <div>
-        <table><tr><td>
-       {{bankNameMat.AadhaarNum}}</td></tr>
-         <tr><td>
-        {{bankNameMat.accountName}}</td></tr>
-         <tr><td>
-         {{bankNameMat.bankAcNum}}</td></tr>
-         <tr><td>
-         {{bankNameMat.bankName}}</td></tr>
-         <tr><td>
-         {{bankNameMat.ifscCode}}</td></tr>
-         <tr><td>
-        {{bankNameMat.panCardNum}}</td></tr>
+        <table>
+            <tr>
+                <td>
+                    {{bankNameMat.AadhaarNum}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{bankNameMat.accountName}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{bankNameMat.bankAcNum}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{bankNameMat.bankName}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{bankNameMat.ifscCode}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{bankNameMat.panCardNum}}</td>
+            </tr>
         </table>
-       </div>
+    </div>
 
-       <div>
-        <table><tr><td>
-       {{professionalDetail.Designation}}</td></tr>
-         <tr><td>
-        {{professionalDetail.Department}}</td></tr>
-         <tr><td>
-         {{professionalDetail.currentLocation}}</td></tr>
-         <tr><td>
-         {{professionalDetail.skill}}</td></tr>
-         <!-- <tr><td>
-         {{professionalDetail.ifscCode}}</td></tr>
-         <tr><td>
-        {{professionalDetail.panCardNum}}</td></tr> -->
+    <div>
+        <table>
+            <tr>
+                <td>
+                    {{professionalDetail.Designation}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{professionalDetail.Department}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{professionalDetail.currentLocation}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{professionalDetail.skill}}</td>
+            </tr>
         </table>
-       </div>
-              <!-- education Details -->
-       <div *ngIf="educationalDetail && (educationalDetail != undefined || educationalDetail != '')">  <tr><td>
-           <!-- educationDetails: -->
-        {{educationalDetail}}</td></tr>
+    </div>
+    <div *ngIf="educationalDetail && (educationalDetail != undefined || educationalDetail != '')">
+        <tr>
+            <td>
+                {{educationalDetail}}
+            </td>
+        </tr>
         <table *ngFor="let item of educationalDetail.items">
-         <tr><td> 
-        {{item.name}}</td></tr>
-         <tr><td>
-         {{item.description}}</td></tr>
-         <tr><td>
-         {{item.price}}</td></tr>
-         <!-- <tr><td>  
-         {{professionalDetail.ifscCode}}</td></tr>
-         <tr><td>
-        {{professionalDetail.panCardNum}}</td></tr> -->
+            <tr>
+                <td>
+                    {{item.name}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{item.description}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{item.price}}</td>
+            </tr>
         </table>
-       </div>
-
-       <!-- experiance Details -->
-       <div>  <tr><td>
-           <!-- educationDetails: -->
-        <!-- *ngIf="educationalDetail && (educationalDetail != undefined || educationalDetail != '')" -->
-        {{educationalDetail}}</td></tr>
+    </div>
+    <div>
+        <tr>
+            <td>
+                {{educationalDetail}}
+            </td>
+        </tr>
         <table *ngFor="let item of experianceDetail.items">
-         <tr><td> 
-        {{item.companyName}}</td></tr>
-         <tr><td>
-         {{item.lastCtc}}</td></tr>
-         <tr><td>
-         {{item.position}}</td></tr>
-         <tr><td>
-            {{item.totalYear}}</td></tr>
-         <!-- <tr><td>  
-         {{professionalDetail.ifscCode}}</td></tr>
-         <tr><td>
-        {{professionalDetail.panCardNum}}</td></tr> -->
+            <tr>
+                <td>
+                    {{item.companyName}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{item.lastCtc}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{item.position}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{item.totalYear}}</td>
+            </tr>
+
         </table>
-       </div>
+    </div>
 </form>

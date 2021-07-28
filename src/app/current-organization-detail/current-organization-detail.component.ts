@@ -15,7 +15,12 @@ export class CurrentOrganizationDetailComponent implements OnInit {
   professionalDetail: any;
   educationalDetail: any;
   experianceDetail: any;
-  // constructor(private _formBuilder: FormBuilder) { }
+  CurrentOrgDetail: any;
+
+  mergeData: any;
+  list = [];
+  getData: any;
+
   constructor(private _formBuilder: FormBuilder, private router: Router,
     private heroService: HeroService) {
     this.personalDetailFunc()
@@ -23,8 +28,8 @@ export class CurrentOrganizationDetailComponent implements OnInit {
     this.educationalDetailFunc()
     this.experianceDetailFunc()
     this.professionalDetailFunc()
+    this.CurrentOrganizationDetail()
   }
-
   personalDetailFunc() {
     this.heroService.personalDetail.subscribe(res => {
       this.personalDetail = res;
@@ -50,12 +55,33 @@ export class CurrentOrganizationDetailComponent implements OnInit {
       this.educationalDetail = res;
     })
   }
+  CurrentOrganizationDetail() {
+    this.heroService.currentOrganizationDetail.subscribe(res => {
+      this.CurrentOrgDetail = res;
+    })
+  }
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
-      currentCtc: ['', Validators.required]
+      currentCtc: ['', Validators.required],
+      nextaprslDate: ['', Validators.required],
+      joiningDate: ['', Validators.required]
     });
   }
-  onSubmit() {
 
+  onSubmit() {
+    this.heroService.currentOrganizationDetail.next(this.firstFormGroup.value)
+    this.getData = localStorage.getItem("personalDetail");
+    this.mergeData = Object.assign(this.personalDetail,this.professionalDetail,this.bankNameMat,this.experianceDetail,this.educationalDetail)
+    console.log("this.mergeData",this.mergeData);
+      this.list.push(this.mergeData)
+    if (this.getData == null ) {
+      localStorage.setItem("personalDetail", JSON.stringify(this.list))
+    }
+    else {
+      var storedNames =JSON.parse(localStorage.getItem("personalDetail"));
+      console.log("merger Data",this.mergeData);
+      this.list=[...storedNames,this.mergeData]
+      localStorage.setItem("personalDetail", JSON.stringify(this.list)) 
+    }    
   }
 }

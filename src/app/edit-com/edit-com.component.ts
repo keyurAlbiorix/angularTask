@@ -19,7 +19,6 @@ export class EditComComponent implements OnInit {
     public dialogRef: MatDialogRef<EditComComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any
     ) { 
-      console.log("reeeeeesssssssssss",data)
       this.fromPage = data;
     }
 
@@ -37,8 +36,6 @@ initlogData(){
   });
 }
   onSubmit(form: FormGroup) {
-    console.log('Valid?', form.valid); // true or false
-    console.log('Name', form.value.name);
     this.update_users()
 this.closeDialog()
     this.initlogData()
@@ -56,7 +53,6 @@ this.closeDialog()
       Note: this.myForm.value.Note,
     }
     this.apiCall.update_users(userData).subscribe((res:any) => {
-      console.log(res,"::users");
       if(res)
       {
         this.toastr.success(res.message);
@@ -66,7 +62,6 @@ this.closeDialog()
       }
     },(err:any)=>{
       this.toastr.error(err.error.message);
-      console.log("err",err.error.message)
     })
   }
 }

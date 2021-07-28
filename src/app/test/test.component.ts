@@ -1,9 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-// import { MatCardModule } from '@angular/material/card';
-// import { MatSliderModule } from '@angular/material/slider';
-// import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import { EditComComponent } from '../edit-com/edit-com.component';
 import { HeroService } from '../hero.service';
 import { HttpClient } from '@angular/common/http';
@@ -24,29 +21,22 @@ export class TestComponent implements OnInit {
   username:string="Push array";
   myuser = '';
   ngOnInit(){
-    // console.log(this.arra1,"arra1");
     this.myForm = this.fb.group({
       name: ['Keyur', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       age: ['', Validators.required],
       Note: ['', [Validators.required, Validators.minLength(15)]],
     });
-    //user
-    // getUsers
     this.getData()
-   
   }
 getData(){
   this.apiCall.findAllAtheletes().subscribe((users:any) => {
-    console.log(users,"::users");
     this.users = users.data;
   },(err:any)=>{
     this.toastr.error(err.error.message);
-    console.log("err",err.error.message)
   })
 }
   openDialog(player){
-    console.log("name: this.name", this.myForm.value)
     const dialogRef = this.dialog.open(EditComComponent, {
       width: '250px',
       data: player
@@ -56,7 +46,6 @@ getData(){
       // this.animal = result;
       // this.name= result
       this.getData()
-      console.log('The dialog was closed',result);
     });
   }
   showMe:boolean=false;
@@ -120,7 +109,6 @@ getData(){
   };
   add(){
     // this.sum = parseInt(this.number1) + parseInt(this.number2);
-    console.log(this.number2);
     
     if((this.number2 % 2) == 0){
       return this.num='even'
@@ -131,15 +119,6 @@ getData(){
   }
 
   onSubmit(form: FormGroup) {
-    console.log('Valid?', form.valid); // true or false
-    console.log('Name', form.value.name);
-    console.log('Email', form.value.email);
-    console.log('Age', form.value.age);
-    console.log('Note', form.value.Note);
-    // console.log('Name = ' + name);
-    // console.log('Email = ' + email);
-    // console.log('age = ' + age);
-    // console.log('Note = ' + Note);
   }
   toggleTag(){
     this.showMe=!this.showMe
@@ -170,8 +149,6 @@ getData(){
       }
     }
       //   onSubmit(name:any, email:any) {
-       //     console.log('Name = ' + name);
-       //     console.log('Email = ' + email);
        //  }
     ondelete(deleteme)
     {
@@ -201,9 +178,5 @@ getData(){
 //   }
 
 //   // onSubmit(form: FormGroup) {
-//   //   console.log('Valid?', form.valid); // true or false
-//   //   console.log('Name', form.value.name);
-//   //   console.log('Email', form.value.email);
-//   //   console.log('Message', form.value.message);
 //   // }
 // }

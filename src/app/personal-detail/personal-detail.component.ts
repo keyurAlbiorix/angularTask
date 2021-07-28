@@ -57,6 +57,8 @@ export class PersonalDetailComponent implements OnInit {
       middelName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', Validators.required],
+      imageData:['',Validators.required],
+      birthDate: ['', Validators.required],
       mobileNumber: ['', Validators.required],
       contactNumber: ['', Validators.required],
       presentAddress: ['', Validators.required],
@@ -79,8 +81,7 @@ export class PersonalDetailComponent implements OnInit {
     reader.readAsDataURL(this.fileToUpload);
   }
   onSubmit() {
-    console.log("nnnnn",this.firstFormGroup);
-    
+    // localStorage.setItem('token', this.firstFormGroup.value)
     this.heroService.personalDetail.next(this.firstFormGroup.value)
     this.submitted = true;
     this.submittedData = this.firstFormGroup.value;

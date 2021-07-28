@@ -29,11 +29,9 @@ export class SportsListComponent implements OnInit {
   }
   getData(){
     this.apiCall.findAllSports().subscribe((users:any) => {
-      console.log(users,"::users");
       this.users = users;
     },(err:any)=>{
       this.toastr.error(err.error.message);
-      console.log("err",err.error.message)
     })
   }
   onclick(prouser){
@@ -52,7 +50,6 @@ export class SportsListComponent implements OnInit {
       
     }
     onUpdate(player){
-      console.log("player._id",player)
       this.router.navigate(['/sports'],{queryParams:{id:player}});
     }
 

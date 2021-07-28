@@ -1,16 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
-import { BankComponentComponent } from './bank-component/bank-component.component';
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
 
-  // firstFormGroup: any;
   private userData = new BehaviorSubject<string>('keyur');
   cast = this.userData.asObservable(); 
-  // data = this.dataSource.asObservable();
 
   public bankNameMat = new BehaviorSubject<any>('');
   public personalDetail = new BehaviorSubject<any>('');
@@ -22,8 +19,6 @@ export class HeroService {
   editUser(newUser){
     this.userData.next(newUser);
   }
-
-
   constructor(private httpClient: HttpClient  ) { }
 
   getUsers() {
@@ -42,11 +37,8 @@ export class HeroService {
     return this.httpClient.patch(`http://localhost:3000/api/update_users/${userData.id}`,userData);
   }
   loggedIn(){
-    // console.log("!localStorage.getItem('token')",
     !localStorage.getItem('token')
-    // )
     return !!localStorage.getItem('token')
-
   }
   findAllSports(){
     return this.httpClient.get('http://localhost:3000/api/findAllSports');
@@ -58,19 +50,12 @@ export class HeroService {
     return this.httpClient.get(`http://localhost:3000/api/findsport/${id}`);
   }
   sports_update(sportsData){
-    console.log("sportsData",sportsData)
     return this.httpClient.put(`http://localhost:3000/api/sports_update/${sportsData.id}`,sportsData);
   }
   getAllFAQs(){
-    // console.log("sportsData",sportsData)
     return this.httpClient.get(`http://localhost:3000/api/getAllFAQs`);
   }
   updateFAQPageDetails(faqData){
-    console.log("faqData._id",faqData.id)
     return this.httpClient.patch(`http://localhost:3000/api/updateFAQPageDetails/${faqData.id}`,faqData);
   }
 }
-
-
-
-

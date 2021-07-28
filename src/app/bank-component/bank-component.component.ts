@@ -1,7 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
-import { MatStepper } from '@angular/material/stepper';
 import { HeroService } from '../hero.service';
 import { Router } from '@angular/router';
 
@@ -25,12 +24,7 @@ export class BankComponentComponent implements OnInit {
     private heroService: HeroService) { 
       this.heroService.bankNameMat.subscribe(res=>{
         this.bankNameMat = res;
-        console.log("res",res)
       })
-      // this.heroService.personalDetail.subscribe(res=>{
-      //   this.personalDetail = res;
-      //   console.log("res",res)
-      // })
     }
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
@@ -45,8 +39,5 @@ export class BankComponentComponent implements OnInit {
   }
   onSubmit() {
     this.heroService.bankNameMat.next(this.firstFormGroup.value)
-    // this.heroService.personalDetail.next(this.firstFormGroup.value)
-    // console.log(this.firstFormGroup.value,":: firstFormGroup")
-    // this.router.navigate(['/ProfessionalDetailsComponent']);
   }
 }

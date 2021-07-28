@@ -24,7 +24,6 @@ export class ProfessionalDetailsComponent implements OnInit {
     private heroService: HeroService) { 
       this.heroService.professionalDetail.subscribe(res=>{
         this.professionalDetail = res;
-        console.log("res",res)
       })
     }
 
@@ -91,13 +90,15 @@ public onFileChange(event) {
 }
 onClick() {
   this.fileData = localStorage.getItem(this.fileName);
-  console.log("fileData",this.fileData)
-  // window.open("Image");
-//   setTimeout(function () 
-//   {
-//     document.body.appendChild(document.createElement("iframe"),).src = fileData;
-//   }, 0);
-//   console.log("document.createelement", document.createElement)
-// }
+  window.open(this.fileData,"_blank");
+}
+
+
+ fileChangeEvent(fileInput) {
+  if (fileInput.target.files && fileInput.target.files[0] ) {
+    this.fileData = localStorage.getItem(this.fileName);
+    var blob = new Blob( this.fileData );
+    var url = window.URL.createObjectURL(blob);
+  }
 }
 }

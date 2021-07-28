@@ -22,7 +22,6 @@ export class ProductComponent implements OnInit {
       price: ['', Validators.required],
       power: ['', [Validators.required]],
   });
-  console.log("this.form",this.form)
   }
   radioChangeHandler(event: any) {
     this.selectedGender = event.target.value;

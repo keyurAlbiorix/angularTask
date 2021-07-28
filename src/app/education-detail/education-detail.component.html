@@ -5,6 +5,7 @@
     <mat-divider></mat-divider><br>
     <div formArrayName="items" *ngFor="let item of orderForm.get('items')['controls']; let i = index;">
       <div [formGroupName]="i">
+
         <mat-form-field class="col-md-3" appearance="fill">
           <input matInput formControlName="name" placeholder="Education Name">
         </mat-form-field>&nbsp;&nbsp;
@@ -16,8 +17,9 @@
         <mat-form-field class="col-md-3" appearance="fill">
           <input matInput formControlName="price" placeholder="Result">
         </mat-form-field>&nbsp;&nbsp;
-        <button mat-raised-button (click)='toggleDisable()'>Basic</button>
-        <button (click)="test()">Disable textbox{{isDisabled}}</button>
+
+        <button mat-raised-button *ngIf="item.disable" (click)='toggleDisable()'>save</button>
+        <button (click) ="test()">Disable textbox{{isDisabled}}</button>
       </div>
       <br>
       <mat-divider></mat-divider>
@@ -25,7 +27,7 @@
     </div>
   </div>
   <div>
-    <button mat-button matStepperPrevious type="submit" mat-raised-button
+    <button  mat-button matStepperPrevious type="submit" mat-raised-button
       color="accent">Previous</button>&nbsp;&nbsp;&nbsp;
     <button mat-button matStepperNext type="submit" class="btn btn-primary">Next</button>
   </div>

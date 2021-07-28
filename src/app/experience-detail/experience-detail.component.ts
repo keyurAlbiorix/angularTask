@@ -19,7 +19,6 @@ export class ExperienceDetailComponent implements OnInit {
     private heroService: HeroService) { 
       this.heroService.experianceDetail.subscribe(res=>{
         this.experianceDetail = res;
-        console.log("res",res)
       })
     }
   ngOnInit() {
@@ -47,7 +46,6 @@ export class ExperienceDetailComponent implements OnInit {
   addItem(): void {
     this.items = this.orderForm.get('items') as FormArray;
     this.items.push(this.createItem());
-    console.log("this.order",this.orderForm)
   }
   onSubmit() { 
     this.heroService.experianceDetail.next(this.orderForm.value)

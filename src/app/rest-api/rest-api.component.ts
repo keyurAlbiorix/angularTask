@@ -18,16 +18,13 @@ export class RestApiComponent implements OnInit {
 
   getData(){
       this.apiCall.getAllFAQs().subscribe((users:any) => {
-        console.log(users,"::users........");
         this.users = users.data;
-        console.log("this.users",this.users[0].faqs[0].items[0].content)
       })
     }
     ondelete(player){
       this.users.splice(player,1)
     }
     openDialog(player){
-      console.log("name: this.name", player)
       const dialogRef = this.dialog.open(EditRestapisComponent, {
         width: '250px',
         data:  player
@@ -35,7 +32,6 @@ export class RestApiComponent implements OnInit {
        
     dialogRef.afterClosed().subscribe(result => {
       this.getData()
-      console.log('The dialog was closed',result);
     });
   }     
 }

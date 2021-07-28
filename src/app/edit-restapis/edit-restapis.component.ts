@@ -19,7 +19,6 @@ export class EditRestapisComponent implements OnInit {
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditRestapisComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any) {
-      console.log("reeeeeesssssssssss",data)
       this.fromPage = data;
      }
 
@@ -31,12 +30,8 @@ export class EditRestapisComponent implements OnInit {
     this.myForm = this.fb.group({
       title: [this.fromPage.faqs[0].items[0].title, Validators.required],
     });
-    console.log(this.fromPage,"::title")
-
   }
   onSubmit(form: FormGroup) {
-    console.log('Valid?', form.valid); // true or false
-    console.log('Name', form.value.name);
     this.update_users()
     this.closeDialog()
     this.initlogData()
@@ -50,9 +45,7 @@ export class EditRestapisComponent implements OnInit {
       id:this.fromPage._id,
       title: this.myForm.value.title,
     }
-    console.log("userData",userData)
     this.apiCall.updateFAQPageDetails(userData).subscribe((res:any) => {
-      console.log(res,"::users");
       if(res)
       {
         this.toastr.success(res.message);
@@ -62,7 +55,6 @@ export class EditRestapisComponent implements OnInit {
       }
     },(err:any)=>{
       this.toastr.error(err.error.message);
-      console.log("err",err.error.message)
     })
   }
 }

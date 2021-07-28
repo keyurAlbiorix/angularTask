@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
     this.apiCall.logIn(userData).subscribe((res:any) => {
       localStorage.setItem('token',res.token)
       this.router.navigate(['/test'])
-      console.log(res,"::users");
       if(res)
       {
         // alert(res.message)
@@ -46,7 +45,6 @@ export class LoginComponent implements OnInit {
     },(err:any)=>{
       //toastr
       this.toastr.error(err.error.message);
-      console.log("err",err.error.message)
     })
   }
   initlogData(){
@@ -56,7 +54,6 @@ export class LoginComponent implements OnInit {
     });
   }
   onSubmit() {
-    console.log('Name',this.myForm);
     if (this.myForm.invalid) {
       return;
   }

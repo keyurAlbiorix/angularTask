@@ -27,7 +27,6 @@ export class AppComponent implements OnInit{
   }
 
   // openDialog(){
-  //   // console.log("name: this.name", this.myForm.value)
   //   const dialogRef = this.dialog.open(TestComponent, {
   //     width: '250px',
   //     data: this.myForm.value
@@ -36,7 +35,6 @@ export class AppComponent implements OnInit{
     // dialogRef.afterClosed().subscribe(result => {
    
     //   this.name= result
-    //   console.log('The dialog was closed',result);
     // });
   // }
 //   showMe:boolean=false;
@@ -94,7 +92,6 @@ export class AppComponent implements OnInit{
 //   this.title=title
 //   };
 //   add(){
-//     console.log(this.number2);
 //     if((this.number2 % 2) == 0){
 //       return this.num='even'
 //     }
@@ -104,8 +101,6 @@ export class AppComponent implements OnInit{
 //   }
 
 //   onSubmit(form: FormGroup) {
-//     console.log('Valid?', form.valid); // true or false
-//     console.log('Name', form.value.name);
 //   }
 //   toggleTag(){
 //     this.showMe=!this.showMe
