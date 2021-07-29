@@ -1,0 +1,108 @@
+<form name="firstFormGroup" [formGroup]="firstFormGroup" (ngSubmit)="firstFormGroup.valid && onSubmit()">
+    <mat-card>
+        <mat-card-title>Personal Details</mat-card-title>
+        <ng-template matStepLabel>Personal Details</ng-template>
+        <div class="form-row">
+            <mat-form-field class="col-md-5">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName"
+                    [ngClass]="{'is-invalid':firstFormGroup.get('firstName').touched && firstFormGroup.get('firstName').invalid}">
+                <div class="invalid-feedback">
+                    <div>First Name is required</div>
+                </div>
+            </mat-form-field>
+            <mat-form-field class="col-md-5">
+                <mat-label>Middel Name</mat-label>
+                <input matInput placeholder="Middel name" formControlName="middelName"
+                    [ngClass]="{'is-invalid':firstFormGroup.get('middelName').touched && firstFormGroup.get('middelName').invalid}"
+                    required>
+                <div class="invalid-feedback">
+                    <div>Middel Name is required</div>
+                </div>
+            </mat-form-field>
+            <mat-form-field class="col-md-5">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Last name" formControlName="lastName"
+                    [ngClass]="{'is-invalid':firstFormGroup.get('lastName').touched && firstFormGroup.get('lastName').invalid}"
+                    required>
+                <div class="invalid-feedback">
+                    <div>Last Name is required</div>
+                </div>
+            </mat-form-field>
+            <br>
+        </div>
+        <div class="form-row">
+            <mat-form-field class="col-md-3">
+                <mat-label>Email</mat-label>
+                <input matInput email placeholder="Email"
+                    [ngClass]="{'is-invalid':firstFormGroup.get('email').touched && firstFormGroup.get('email').invalid}"
+                    formControlName="email" required>
+                <div class="invalid-feedback">
+                    <div>Email is required</div>
+                </div>
+            </mat-form-field>
+            <mat-form-field class="col-md-3">
+                <mat-label>Mobile number</mat-label>
+                <input matInput placeholder="Middel name" type="number"
+                    [ngClass]="{'is-invalid':firstFormGroup.get('mobileNumber').touched && firstFormGroup.get('mobileNumber').invalid}"
+                    formControlName="mobileNumber" required>
+                <div class="invalid-feedback">
+                    <div>Mobile number is required</div>
+                </div>
+            </mat-form-field>
+            <mat-form-field class="col-md-3">
+                <mat-label>Contact number</mat-label>
+                <input matInput placeholder="Last name" formControlName="contactNumber" type="number"
+                    [ngClass]="{'is-invalid':firstFormGroup.get('contactNumber').touched && firstFormGroup.get('contactNumber').invalid}"
+                    required>
+                <div class="invalid-feedback">
+                    <div>Contact number is required</div>
+                </div>
+            </mat-form-field><br>
+        </div>
+        <div class="form-row">
+            <mat-form-field class="col-md-5">
+                <mat-label>Birth Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="birthDate" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <input style="margin-left: 8px;" type="file" formControlName="imageData" class="btn btn-primary"
+                (change)="onFileChange($event)" />
+            <button class="btn btn-danger btn-lg btn-block" (click)="onClick()">Show Image</button>
+
+        </div>
+
+        <mat-form-field class="col-md-4">
+            <mat-label>Present Address</mat-label>
+            <textarea matInput placeholder="Last name" class="form-control" formControlName="presentAddress"
+                [ngClass]="{'is-invalid':firstFormGroup.get('presentAddress').touched && firstFormGroup.get('presentAddress').invalid}"
+                required></textarea>
+            <div class="invalid-feedback">
+                <div>Present Address is required</div>
+            </div>
+        </mat-form-field>
+
+        <mat-checkbox style="margin-left: 25px;" type="checkbox" formControlName="isSameAddress"
+            (change)="checked($event.checked)">click Me
+        </mat-checkbox>
+
+        <mat-form-field class="col-md-4" style="margin-left: 20px;">
+            <mat-label>Permanent Address</mat-label>
+            <textarea matInput placeholder="Last name" formControlName="permanentAddress" class="form-control"
+                [ngClass]="{'is-invalid':firstFormGroup.get('permanentAddress').touched && firstFormGroup.get('permanentAddress').invalid}"
+                required></textarea>
+            <div class="invalid-feedback">
+                <div>Permanent Address is required</div>
+            </div>
+        </mat-form-field>
+
+        <div>
+            <button matStepperNext type="submit" [disabled]="firstFormGroup.invalid"
+                class="btn btn-primary">Next</button>
+        </div>
+
+    </mat-card>
+    <img id="Image" [src]="fileData" alt="">
+</form>

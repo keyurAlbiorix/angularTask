@@ -52,7 +52,6 @@ export class RegisterComponent implements OnInit {
       password:this.myForm.value.password
     }
     this.apiCall.user(userData).subscribe((res:any) => {
-      console.log(res,"::users");
       if(res)
       {
         this.toastr.success(res.message);
@@ -63,7 +62,6 @@ export class RegisterComponent implements OnInit {
       }
     },(err:any)=>{
       this.toastr.error(err.error.message);
-      console.log("err",err.error.message)
     })
    
   }

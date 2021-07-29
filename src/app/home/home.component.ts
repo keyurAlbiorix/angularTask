@@ -56,13 +56,10 @@ getData(){
         this.temp = 0;
       }
      this.buttons.length < this.temp ? this.temp-- : this.temp++;
-      console.log(this.temp);
   }
   onSubmit(){
     // player perameter
-    // console.log("player",player)
     // this.arrayEmpty.push(player) 
-    // console.log("this.arrayEmpty.push",this.arrayEmpty) 
     this.user = Object.assign(this.user, this.myForm.value)
     this.addUser(this.user);
     this.myForm.reset();

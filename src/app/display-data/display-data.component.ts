@@ -13,7 +13,6 @@ export class DisplayDataComponent implements OnInit {
   ngOnInit(): void {
     // localStorage.getItem('token')
     this.myForm = JSON.parse(localStorage.getItem('Users'));
-    console.log("this.myForm",this.myForm)
     this.user = Object.assign(this.user, this.myForm.value)
     this.addUser(this.user);
   }

@@ -27,11 +27,9 @@ public constructor(private formBuilder: FormBuilder,private titleService: Title,
       this.route.queryParams
     .subscribe(
       (params) => {
-        console.log(params,":: params")
         this.id = params['id'];
         this.title = "Update sports";
         this.titleButton= "Update Sports";
-        console.log(this.id + '' );
       }
     ); 
     }
@@ -73,7 +71,6 @@ findsport(){
     }
     this.apiCall.addSport(userData).subscribe((res:any) => {
       
-      console.log(res,"::users");
       if(res)
       {
         this.toastr.success(res.message);
@@ -84,7 +81,6 @@ findsport(){
       }
     },(err:any)=>{
       this.toastr.error(err.error.message);
-      console.log("err",err.error.message)
     })
   }
  
@@ -105,15 +101,12 @@ findsport(){
         this.sportsForm.reset();
     }
     sports_update(){
-      console.log("function call")
       let sportsData=
       {
         id:this.id,
         sports: this.sportsForm.value.sports,
       }
-      console.log("sportsData",sportsData)
       this.apiCall.sports_update(sportsData).subscribe((res:any) => {
-        console.log(res,"::users");
         if(res)
         {
           this.toastr.success(res.message);
@@ -124,7 +117,6 @@ findsport(){
         }
       },(err:any)=>{
         this.toastr.error(err.error.message);
-        console.log("err",err.error.message)
       })
     }
 }

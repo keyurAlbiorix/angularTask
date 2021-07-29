@@ -31,9 +31,28 @@ import { DisplayDataComponent } from './display-data/display-data.component';
 import { ProductComponent } from './product/product.component';
 import { RestApiComponent } from './rest-api/rest-api.component';
 import { EditRestapisComponent } from './edit-restapis/edit-restapis.component';
+import { StrapperComponent } from './strapper/strapper.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { BankComponentComponent } from './bank-component/bank-component.component';
+import { ProfessionalDetailsComponent } from './professional-details/professional-details.component';
+import { EducationDetailComponent } from './education-detail/education-detail.component';
+import { ExperienceDetailComponent } from './experience-detail/experience-detail.component';
+import { CurrentOrganizationDetailComponent } from './current-organization-detail/current-organization-detail.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { SaveButtonComponent } from './save-button/save-button.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { PersonalDetailComponent } from './personal-detail/personal-detail.component';
+import { EmsComponentComponent } from './ems-component/ems-component.component'; 
+// import { JwPaginationModule } from 'jw-angular-pagination';
+
 @NgModule({
   declarations: [
-    
+    // InputDisabledDirective,
     AppComponent,
     TestComponent,
     NavbarComponent,
@@ -47,9 +66,28 @@ import { EditRestapisComponent } from './edit-restapis/edit-restapis.component';
     DisplayDataComponent,
     ProductComponent,
     RestApiComponent,
-    EditRestapisComponent
+    EditRestapisComponent,
+    StrapperComponent,
+    BankComponentComponent,
+    ProfessionalDetailsComponent,
+    EducationDetailComponent,
+    ExperienceDetailComponent,
+    CurrentOrganizationDetailComponent,
+    SaveButtonComponent,
+    PersonalDetailComponent,
+    EmsComponentComponent
   ],
-  imports: [
+  imports: [MatIconModule,
+    // JwPaginationModule,
+    MatCheckboxModule,
+    MatDividerModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatStepperModule,
+    MatInputModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatInputModule,
     Ng2SearchPipeModule,
     HttpClientModule,
     BrowserModule,

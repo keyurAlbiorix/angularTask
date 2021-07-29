@@ -1,0 +1,173 @@
+<form [formGroup]="sixFormGroup" (ngSubmit)="onSubmit()">
+    <mat-card>
+        <mat-card-title>Current Organization Detail</mat-card-title>
+        <div class="form-row">
+            <mat-form-field class="col-md-5" appearance="fill">
+                <mat-label>Joinnig Date</mat-label>
+                <input matInput formControlName="joiningDate" [matDatepicker]="picker" required>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;
+            <mat-form-field class="col-md-5" appearance="fill">
+                <mat-label>Next Appraisal Date</mat-label>
+                <input matInput formControlName="nextaprslDate" [matDatepicker]="picker1" required>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>&nbsp;&nbsp;&nbsp;<br>
+        </div>
+        <mat-form-field class="col-md-5" appearance="fill">
+            <mat-label>Current CTC</mat-label>
+            <input type="number" matInput placeholder="Current CTC" formControlName="currentCtc" required>
+        </mat-form-field>&nbsp;&nbsp;&nbsp;
+        <br>
+        <div>
+        </div>
+        <div>
+            <button mat-button type="submit" class="btn btn-primary">FINISH</button>
+        </div>
+    </mat-card>
+
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <label *ngIf="personalDetail.firstName == !null">Personal Details</label>
+                    {{personalDetail.firstName}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.middelName}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.lastName}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.email}}
+                    {{personalDetail.birthDate| date}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.mobileNumber}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.contactNumber}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.contactNumber}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.presentAddress}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{personalDetail.permanentAddress}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <td>
+                    {{bankNameMat.AadhaarNum}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{bankNameMat.accountName}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{bankNameMat.bankAcNum}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{bankNameMat.bankName}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{bankNameMat.ifscCode}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{bankNameMat.panCardNum}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <td>
+                    {{professionalDetail.Designation}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{professionalDetail.Department}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{professionalDetail.currentLocation}}
+                    {{professionalDetail.years}}
+                    {{professionalDetail.month}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{professionalDetail.skill}}</td>
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="educationalDetail && (educationalDetail != undefined || educationalDetail != '')">
+        <tr>
+            <td>
+                {{educationalDetail}}
+            </td>
+        </tr>
+        <table *ngFor="let item of educationalDetail.items">
+            <tr>
+                <td>
+                    {{item.name}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{item.description}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{item.price}}</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <tr>
+            <td>
+                {{educationalDetail}}
+            </td>
+        </tr>
+        <table *ngFor="let item of experianceDetail.items">
+            <tr>
+                <td>
+                    {{item.companyName}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{item.lastCtc}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{item.position}}</td>
+            </tr>
+            <tr>
+                <td>
+                    {{item.totalYear}}</td>
+            </tr>
+
+        </table>
+    </div>
+</form>

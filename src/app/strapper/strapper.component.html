@@ -1,0 +1,40 @@
+<mat-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Personal Details</ng-template>
+      <app-personal-detail></app-personal-detail>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Bank Details</ng-template>
+      <app-bank-component></app-bank-component>
+      <div>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Professional Detail</ng-template>
+      <app-professional-details></app-professional-details>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="fourthFormGroup">
+    <form [formGroup]="fourthFormGroup">
+      <ng-template matStepLabel>Education Details</ng-template>
+      <app-education-detail></app-education-detail>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="fifthFormGroup">
+    <form [formGroup]="fifthFormGroup">
+      <ng-template matStepLabel>Experience Detail</ng-template>
+      <app-experience-detail></app-experience-detail>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="sixFormGroup">
+    <form [formGroup]="sixFormGroup">
+      <ng-template matStepLabel>Current Organizarion Detail</ng-template>
+      <app-current-organization-detail></app-current-organization-detail>
+    </form>
+  </mat-step>
+</mat-stepper>
