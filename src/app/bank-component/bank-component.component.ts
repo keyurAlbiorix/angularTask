@@ -13,21 +13,33 @@ import { Router } from '@angular/router';
   }]
 })
 export class BankComponentComponent implements OnInit {
-  firstFormGroup: FormGroup;
+  // firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   submitted: boolean;
   userData: string;
   bankNameMat: any;
   personalDetail: any;
+  perdata: any;
 
   constructor(private _formBuilder: FormBuilder, private router: Router, private cd: ChangeDetectorRef,
-    private heroService: HeroService) { 
-      this.heroService.bankNameMat.subscribe(res=>{
-        this.bankNameMat = res;
-      })
-    }
+    private heroService: HeroService) {
+    this.heroService.bankNameMat.subscribe(res => {
+      this.bankNameMat = res;
+    })
+  }
   ngOnInit(): void {
-    this.firstFormGroup = this._formBuilder.group({
+    let updateData = JSON.parse(localStorage.getItem('updateData'))
+    this.perdata = updateData
+    if (Object.keys(this.perdata).length === null) {
+      this.formData()
+    }
+    else {
+      this.updateFormData()
+    }
+    this.heroService.cast.subscribe(userData => this.userData = userData);
+  }
+  formData() {
+    this.secondFormGroup = this._formBuilder.group({
       bankName: ['', Validators.required],
       accountName: ['', Validators.required],
       bankAcNum: ['', Validators.required],
@@ -35,9 +47,18 @@ export class BankComponentComponent implements OnInit {
       AadhaarNum: ['', Validators.required],
       panCardNum: ['', Validators.required],
     });
-    this.heroService.cast.subscribe(userData => this.userData = userData);
+  }
+  updateFormData() {
+    this.secondFormGroup = this._formBuilder.group({
+      bankName: [this.perdata.bankName, Validators.required],
+      accountName: [this.perdata.accountName, Validators.required],
+      bankAcNum: [this.perdata.bankAcNum, Validators.required],
+      ifscCode: [this.perdata.ifscCode, Validators.required],
+      AadhaarNum: [this.perdata.AadhaarNum, Validators.required],
+      panCardNum: [this.perdata.panCardNum, Validators.required],
+    });
   }
   onSubmit() {
-    this.heroService.bankNameMat.next(this.firstFormGroup.value)
+    this.heroService.bankNameMat.next(this.secondFormGroup.value)
   }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { Router } from '@angular/router';
@@ -11,8 +11,8 @@ import { HeroService } from '../hero.service';
 })
 export class ProfessionalDetailsComponent implements OnInit {
 
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+ 
+  thirdFormGroup:FormGroup;
   submitted: boolean;
   chosenYearDate: Date;
   chosenMonthDate: Date = new Date(2020,0,1);
@@ -20,6 +20,7 @@ export class ProfessionalDetailsComponent implements OnInit {
   professionalDetail: any;
   fileName: any;
   fileData:any;
+  perdata: any;
   constructor(private _formBuilder: FormBuilder, private router: Router,
     private heroService: HeroService) { 
       this.heroService.professionalDetail.subscribe(res=>{
@@ -28,7 +29,17 @@ export class ProfessionalDetailsComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.firstFormGroup = this._formBuilder.group({
+    let updateData = JSON.parse(localStorage.getItem('updateData'))
+    this.perdata = updateData
+    if (Object.keys(this.perdata).length === null) {
+      this.formData()
+    }
+    else {
+      this.updateFormData()
+    }
+  }
+  formData(){
+    this.thirdFormGroup = this._formBuilder.group({
       Designation: ['', Validators.required],
       Department:['',Validators.required],
       currentLocation:['',Validators.required],
@@ -36,8 +47,18 @@ export class ProfessionalDetailsComponent implements OnInit {
       panCardNum:['',Validators.required],
       });
   }
+  updateFormData(){
+    this.thirdFormGroup = this._formBuilder.group({
+      Designation: [this.perdata.Designation, Validators.required],
+      Department:[this.perdata.Department,Validators.required],
+      currentLocation:[this.perdata.currentLocation,Validators.required],
+      skill:[this.perdata.skill,Validators.required],
+      panCardNum:[this.perdata.panCardNum,Validators.required],
+      });
+  }
   onSubmit(){
-    this.heroService.professionalDetail.next(this.firstFormGroup.value)
+    console.log("years,months", this.thirdFormGroup.value)
+    this.heroService.professionalDetail.next(this.thirdFormGroup.value)
   }
   goBack(stepper: MatStepper){
     stepper.previous();
@@ -94,11 +115,11 @@ onClick() {
 }
 
 
- fileChangeEvent(fileInput) {
-  if (fileInput.target.files && fileInput.target.files[0] ) {
-    this.fileData = localStorage.getItem(this.fileName);
-    var blob = new Blob( this.fileData );
-    var url = window.URL.createObjectURL(blob);
-  }
-}
+//  fileChangeEvent(fileInput) {
+//   if (fileInput.target.files && fileInput.target.files[0] ) {
+//     this.fileData = localStorage.getItem(this.fileName);
+//     var blob = new Blob( this.fileData );
+//     var url = window.URL.createObjectURL(blob);
+//   }
+  // }
 }

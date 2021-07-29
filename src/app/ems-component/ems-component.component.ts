@@ -27,30 +27,18 @@ export class EmsComponentComponent implements OnInit {
   ngOnInit(): void {
     let personalDetailData = JSON.parse(localStorage.getItem('personalDetail'))
     this.perdata = personalDetailData
-    console.log("this.perdata",this.perdata )
-      // this.personalDetail = JSON.parse(localStorage.getItem('keyur'));
-    // this.myForm = JSON.parse(localStorage.getItem('Users'));
-    // this.items = Array(150).fill(0).map((x, i) => ({ id: (i + 1), name: `Item ${i + 1}`}));
   }
-  getArrayLenght(length) {
-    return new Array(length / 20)
-  }
-  getIndex(pageIndex) {
-    this.startIndex = pageIndex * 5;
-    this.endIndex = this.startIndex + 5;
-  }
-  prevIndex(length) {
-    this.startIndex = length * 0;
-  }
-  nextIndex(endIndex) {
-    this.endIndex++
-  }
+  
   onChangePage(pageOfItems: Array<any>) {
-
   }
   ondelete(deleteme){
-    console.log("deleteme",deleteme)
-    this.personalDetail.splice(this.personalDetail.indexOf(deleteme),1)
-    console.log("this.personalDetail", this.personalDetail.splice)
+    this.perdata.splice(this.perdata.indexOf(deleteme),1)
+  }
+  updateData(item){
+    console.log("this.perdata",item)
+    localStorage.setItem("updateData", JSON.stringify(item)) 
+  }
+  addData(){
+    localStorage.setItem("updateData", JSON.stringify({})) 
   }
 }

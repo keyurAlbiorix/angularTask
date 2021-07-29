@@ -1,7 +1,7 @@
 <p style="font-size: xx-large;margin-top: 20px;padding-left: 500px;">Employee Management System
 </p>
 <div style="margin-top: 20px;padding-left: 1200px;">
-  <button class="btn btn-danger" [routerLink]="['/strapper']" routerLinkActive="router-link-active"> Add
+  <button class="btn btn-danger" (click)="addData()" [routerLink]="['/strapper']" routerLinkActive="router-link-active"> Add
     Employee </button>
 </div>
 
@@ -29,7 +29,7 @@
       <td>{{item.email}}</td>
       <td>{{item.mobileNumber}}</td>
       <td>
-        <button mat-icon-button color="primary" [routerLink]="['/strapper']" aria-label="Example icon button with a home icon">
+        <button mat-icon-button color="primary"  (click)="updateData(item)" [routerLink]="['/strapper']" aria-label="Example icon button with a home icon">
           <mat-icon>edit</mat-icon>
         </button>
       </td>

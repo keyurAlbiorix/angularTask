@@ -1,4 +1,4 @@
-import {  Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HeroService } from '../hero.service';
 
@@ -10,8 +10,7 @@ import { HeroService } from '../hero.service';
 export class PersonalDetailComponent implements OnInit {
 
   firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  // submitted: boolean;
+  // secondFormGroup: FormGroup;
   BankComponentComponent: '';
 
   percentDone: number;
@@ -26,7 +25,8 @@ export class PersonalDetailComponent implements OnInit {
   fileToUpload: any;
   imageUrl: any;
   submitted = false;
-  submittedData:any= {};
+  submittedData: any = {};
+  perdata: any;
 
   constructor(private _formBuilder: FormBuilder,
     private heroService: HeroService) {
@@ -47,17 +47,27 @@ export class PersonalDetailComponent implements OnInit {
     }
   }
   onClick() {
-     this.fileData = localStorage.getItem(this.fileName);
+    this.fileData = localStorage.getItem(this.fileName);
   }
 
   ngOnInit(): void {
+    let updateData = JSON.parse(localStorage.getItem('updateData'))
+    this.perdata = updateData
+    if (Object.keys(this.perdata).length === null) {
+      this.formData()
+    }
+    else {
+      this.updateFormData()
+    }
+  }
+
+  formData() {
     this.firstFormGroup = this._formBuilder.group({
-    
       firstName: ['', Validators.required],
       middelName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', Validators.required],
-      imageData:['',Validators.required],
+      imageData: ['', Validators.required],
       birthDate: ['', Validators.required],
       mobileNumber: ['', Validators.required],
       contactNumber: ['', Validators.required],
@@ -66,11 +76,23 @@ export class PersonalDetailComponent implements OnInit {
       file: [null],
       isSameAddress: ['', Validators.required],
     });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+  }
+  updateFormData() {
+    this.firstFormGroup = this._formBuilder.group({
+      firstName: [this.perdata.firstName, Validators.required],
+      middelName: [this.perdata.middelName, Validators.required],
+      lastName: [this.perdata.lastName, Validators.required],
+      email: [this.perdata.email, Validators.required],
+      imageData: ['', Validators.required],
+      birthDate: [this.perdata.birthDate, Validators.required],
+      mobileNumber: [this.perdata.mobileNumber, Validators.required],
+      contactNumber: [this.perdata.contactNumber, Validators.required],
+      presentAddress: [this.perdata.presentAddress, Validators.required],
+      permanentAddress: [this.perdata.permanentAddress, Validators.required],
+      // file: [this.perdata.file],
+      isSameAddress: [this.perdata.isSameAddress, Validators.required],
     });
   }
-
   handleFileInput(file: FileList) {
     this.fileToUpload = file.item(0);
 
@@ -81,7 +103,6 @@ export class PersonalDetailComponent implements OnInit {
     reader.readAsDataURL(this.fileToUpload);
   }
   onSubmit() {
-    // localStorage.setItem('token', this.firstFormGroup.value)
     this.heroService.personalDetail.next(this.firstFormGroup.value)
     this.submitted = true;
     this.submittedData = this.firstFormGroup.value;

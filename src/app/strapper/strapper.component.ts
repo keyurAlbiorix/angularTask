@@ -44,10 +44,16 @@ export class StrapperComponent implements OnInit {
   } 
   ngOnInit(): void {
     this.firstFormGroup = this._formBuilder.group({
-
     });
     this.secondFormGroup = this._formBuilder.group({
-
+    });
+    this.thirdFormGroup = this._formBuilder.group({
+    });
+    this.fourthFormGroup = this._formBuilder.group({
+    });
+    this.fifthFormGroup = this._formBuilder.group({
+    });
+    this.sixFormGroup = this._formBuilder.group({
     });
   }
 

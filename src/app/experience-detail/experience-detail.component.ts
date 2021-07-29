@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { HeroService } from '../hero.service';
 
 @Component({
@@ -9,11 +9,9 @@ import { HeroService } from '../hero.service';
 })
 export class ExperienceDetailComponent implements OnInit {
 
-  orderForm: FormGroup;
+  fifthFormGroup: FormGroup;
   items: FormArray;
   experianceDetail: any;
-
-  // constructor(private formBuilder: FormBuilder) { }
 
   constructor(private formBuilder: FormBuilder, 
     private heroService: HeroService) { 
@@ -22,14 +20,10 @@ export class ExperienceDetailComponent implements OnInit {
       })
     }
   ngOnInit() {
-    this.orderForm = new FormGroup({
+    this.fifthFormGroup = new FormGroup({
       items: new FormArray([
-        // companyName:['', Validators.required],
-        // position: ['', Validators.required],
-        // totalYear: ['', Validators.required],
-        // lastCtc: ['', Validators.required]
+      
       ])
-      // bankName: ['', Validators.required],
     });
    
   }
@@ -44,11 +38,10 @@ export class ExperienceDetailComponent implements OnInit {
   }
 
   addItem(): void {
-    this.items = this.orderForm.get('items') as FormArray;
+    this.items = this.fifthFormGroup.get('items') as FormArray;
     this.items.push(this.createItem());
   }
   onSubmit() { 
-    this.heroService.experianceDetail.next(this.orderForm.value)
-
+    this.heroService.experianceDetail.next(this.fifthFormGroup.value)
   }
 }

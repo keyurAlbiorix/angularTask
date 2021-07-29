@@ -9,14 +9,14 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./current-organization-detail.component.css']
 })
 export class CurrentOrganizationDetailComponent implements OnInit {
-  firstFormGroup: FormGroup;
+  // firstFormGroup: FormGroup;
   personalDetail: any;
   bankNameMat: any;
   professionalDetail: any;
   educationalDetail: any;
   experianceDetail: any;
   CurrentOrgDetail: any;
-
+  sixFormGroup:FormGroup;
   mergeData: any;
   list = [];
   getData: any;
@@ -61,7 +61,7 @@ export class CurrentOrganizationDetailComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    this.firstFormGroup = this._formBuilder.group({
+    this.sixFormGroup = this._formBuilder.group({
       currentCtc: ['', Validators.required],
       nextaprslDate: ['', Validators.required],
       joiningDate: ['', Validators.required]
@@ -69,7 +69,7 @@ export class CurrentOrganizationDetailComponent implements OnInit {
   }
 
   onSubmit() {
-    this.heroService.currentOrganizationDetail.next(this.firstFormGroup.value)
+    this.heroService.currentOrganizationDetail.next(this.sixFormGroup.value)
     this.getData = localStorage.getItem("personalDetail");
     this.mergeData = Object.assign(this.personalDetail,this.professionalDetail,this.bankNameMat,this.experianceDetail,this.educationalDetail)
     console.log("this.mergeData",this.mergeData);
@@ -83,5 +83,6 @@ export class CurrentOrganizationDetailComponent implements OnInit {
       this.list=[...storedNames,this.mergeData]
       localStorage.setItem("personalDetail", JSON.stringify(this.list)) 
     }    
+    this.router.navigate(["/ems"]);
   }
 }
